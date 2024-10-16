@@ -67,6 +67,10 @@ public class MoveBall : MonoBehaviour
             speed += speedIncrement;
             rb.velocity = rb.velocity.normalized * speed;
         }
-        
+
+        if (collision.gameObject.CompareTag("Brick")) { 
+            Destroy(collision.gameObject);
+        }
+
     }
 }
