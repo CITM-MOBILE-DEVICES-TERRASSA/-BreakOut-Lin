@@ -10,9 +10,14 @@ public class MoveBall : MonoBehaviour
     private Vector2 screenBounds;
     private float squareWidth;
     private float squareHeight;
+
+    private Rigidbody2D rb;
     void Start()
     {
         Camera mainCamera = Camera.main;
+
+
+        rb = GetComponent<Rigidbody2D>();
 
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
 
@@ -23,25 +28,25 @@ public class MoveBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-       
 
-       
-        Vector3 newPosition = transform.position + new Vector3(0, 0, 0) * speed * Time.deltaTime;
 
-       
+
+
+        Vector3 newPosition = transform.position + new Vector3(0, 1, 0) * speed * Time.deltaTime;
+
         newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + squareWidth, screenBounds.x - squareWidth);
         if (newPosition.y > screenBounds.y - squareHeight)
         {
             newPosition.y = screenBounds.y - squareHeight;
-           
+
         }
 
-        if (newPosition.y < screenBounds.y * -1 - squareHeight) {
+        if (newPosition.y < screenBounds.y * -1 - squareHeight)
+        {
             Debug.Log("Die");
         }
 
 
-            transform.position = newPosition;
+        transform.position = newPosition;
     }
 }
