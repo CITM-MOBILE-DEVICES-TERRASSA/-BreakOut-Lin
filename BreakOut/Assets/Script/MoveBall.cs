@@ -24,11 +24,10 @@ public class MoveBall : MonoBehaviour
     void Update()
     {
         
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+       
 
        
-        Vector3 newPosition = transform.position + new Vector3(moveX, moveY, 0) * speed * Time.deltaTime;
+        Vector3 newPosition = transform.position + new Vector3(0, 0, 0) * speed * Time.deltaTime;
 
        
         newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + squareWidth, screenBounds.x - squareWidth);
