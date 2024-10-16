@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 650928145}
   - component: {fileID: 650928144}
   - component: {fileID: 650928143}
-  - component: {fileID: 650928147}
+  - component: {fileID: 650928146}
   m_Layer: 0
   m_Name: Padding
   m_TagString: Untagged
@@ -313,8 +313,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &650928147
-PolygonCollider2D:
+--- !u!61 &650928146
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -355,15 +355,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.05, y: 0.5}
-      - {x: -0.5, y: 0}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0}
-      - {x: 0.05, y: 0.5}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1491894672
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945f690bccc92b14abb470d2cf91340e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
+  maxVelocity: 15
+  speedIncrement: 0.5
 --- !u!50 &2050139353
 Rigidbody2D:
   serializedVersion: 4
@@ -607,7 +603,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: addbb038cba81954799a6d39fa4f250f, type: 2}
   m_IncludeLayers:
@@ -619,7 +615,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6,23 +6,26 @@ public class MoveBall : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float speed = 5;
+    public float speed = 3;
+    public float maxVelocity = 15;
+    public float speedIncrement = 0.5f;
+
+    private float speedInici = 10f;
     private Vector2 screenBounds;
-    private float squareWidth;
     private float squareHeight;
+
+    private Vector2 velocity;
 
     private Rigidbody2D rb;
     void Start()
     {
-        Camera mainCamera = Camera.main;
 
+        Camera mainCamera = Camera.main;
+        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
+        squareHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 
         rb = GetComponent<Rigidbody2D>();
-
-        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
-
-        squareWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        squareHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+        LaunchBall();
     }
 
     // Update is called once per frame
@@ -32,21 +35,38 @@ public class MoveBall : MonoBehaviour
 
 
 
+
         Vector3 newPosition = transform.position + new Vector3(0, 1, 0) * speed * Time.deltaTime;
-
-        newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + squareWidth, screenBounds.x - squareWidth);
-        if (newPosition.y > screenBounds.y - squareHeight)
-        {
-            newPosition.y = screenBounds.y - squareHeight;
-
-        }
-
         if (newPosition.y < screenBounds.y * -1 - squareHeight)
         {
+            transform.position = Vector3.zero;
+            speed = speedInici;
+            rb.velocity = Vector3.zero;
+            LaunchBall();
             Debug.Log("Die");
         }
 
+        
 
-        transform.position = newPosition;
+
+    }
+    void LaunchBall()
+    {
+        velocity.x = Random.Range(-1f, 1f);
+        velocity.y = -1;
+        rb.velocity = velocity.normalized * speed;
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (speed >= maxVelocity)
+        {
+            speed = 15;
+        }
+        else {
+            speed += speedIncrement;
+            rb.velocity = rb.velocity.normalized * speed;
+        }
+        
     }
 }
