@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     public float spacing = 0.1f; // 用于设置砖块之间的间距比例
     public float wallWidthRatio = 0.8f; // 墙的宽度占屏幕宽度的比例（如0.8表示80%）
     public float wallHeightRatio = 0.3f; // 墙的高度占屏幕高度的比例（如0.3表示30%）
+    public Gradient gradient;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class LevelGenerator : MonoBehaviour
                 GameObject newBrick = Instantiate(brickPrefab, transform);
                 newBrick.transform.localScale = new Vector3(brickWidth, brickHeight, 1); // 调整砖块的尺寸
                 newBrick.transform.position = startPosition + new Vector3(i * (brickWidth + spacing), j * (brickHeight + spacing), 0);
+                newBrick.GetComponent<SpriteRenderer>().color = gradient.Evaluate((float)j / (size.y - 1));
             }
         }
     }
