@@ -72,5 +72,24 @@ public class MoveBall : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.gameObject.CompareTag("padding"))
+        {
+            // 生成一个0到1之间的随机数
+            float randomChance = Random.value;
+
+            // 如果随机数小于0.1（10%的概率），触发向左或向右的动作
+            if (randomChance < 0.7f)
+            {
+                // 随机选择-1或1，使其向左或向右移动
+                Debug.Log("Die");
+                velocity.x = Random.Range(0, 2) == 0 ? -Mathf.Abs(velocity.x) : Mathf.Abs(velocity.x);
+            }
+
+            // 无论是否触发10%的概率，对y方向也增加一点小的随机扰动，避免死循环
+            velocity.y += Random.Range(-0.1f, 0.1f); // 在y方向增加一点随机偏移
+        }
+
+
+
     }
 }
