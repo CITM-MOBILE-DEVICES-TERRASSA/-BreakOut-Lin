@@ -56,15 +56,6 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        //for (int i = 0; i < size.x; i++)
-        //{
-
-        //    for (int j = 0; j < size.y; j++)
-        //    {
-        //        GameObject newBrick = Instantiate(brickPrefab, transform);
-        //        newBrick.transform.position = transform.position + new Vector3((float)((size.x - 1)*.5-i) * offset.x, j * offset.y, 0);
-        //    }
-        //}
     }
 
     // Update is called once per frame

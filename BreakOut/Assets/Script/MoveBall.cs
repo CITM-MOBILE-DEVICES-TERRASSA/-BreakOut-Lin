@@ -25,9 +25,8 @@ public class MoveBall : MonoBehaviour
         Camera mainCamera = Camera.main;
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         squareHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
-
         rb = GetComponent<Rigidbody2D>();
-        //LaunchBall();
+        StartCoroutine(AutoLaunchBall(2f));
     }
 
     // Update is called once per frame
@@ -41,6 +40,7 @@ public class MoveBall : MonoBehaviour
             rb.velocity = Vector3.zero;
             Debug.Log("Die");
             islaunch = false;
+            StartCoroutine(AutoLaunchBall(2f));
         }
 
 
@@ -53,9 +53,6 @@ public class MoveBall : MonoBehaviour
         {
             LaunchBall();
         }
-
-
-
     }
     void LaunchBall()
     {
@@ -64,6 +61,15 @@ public class MoveBall : MonoBehaviour
         rb.velocity = velocity.normalized * speed;
         islaunch = true; 
     }
+    private IEnumerator AutoLaunchBall(float delay)
+    {
+        yield return new WaitForSeconds(delay); // 等待指定的延迟时间
+        if (!islaunch) // 只有在未发射的情况下才发射
+        {
+            LaunchBall();
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -75,11 +81,5 @@ public class MoveBall : MonoBehaviour
             speed += speedIncrement;
             rb.velocity = rb.velocity.normalized * speed;
         }
-
-        //if (collision.gameObject.CompareTag("Brick")) {
-
-        //    Destroy(collision.gameObject);
-        //}
-
     }
 }

@@ -13,19 +13,6 @@ public class Bricks : MonoBehaviour
         textMesh = GetComponentInChildren<TextMeshProUGUI>();
         UpdateHealthDisplay(); // 初始化时更新显示
     }
-
-    // 当砖块受到撞击时调用，减少生命值
-    public void TakeDamage(int damage)
-    {
-        //health -= damage;
-        //UpdateHealthDisplay(); // 更新显示
-        //if (health <= 0)
-        //{
-        //    Destroy(gameObject); // 当生命值为0或更少时销毁砖块
-        //}
-    }
-
-    // 更新生命值显示
     public void UpdateHealthDisplay()
     {
         if (textMesh != null)
