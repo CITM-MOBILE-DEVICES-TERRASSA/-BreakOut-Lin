@@ -19,6 +19,8 @@ public class MoveBall : MonoBehaviour
     private bool islaunch = false;
     public GameObject padding;
     private Rigidbody2D rb;
+
+    private HUD hud;
     void Start()
     {
 
@@ -27,6 +29,7 @@ public class MoveBall : MonoBehaviour
         squareHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(AutoLaunchBall(2f));
+        hud = FindObjectOfType<HUD>();
     }
 
     // Update is called once per frame
@@ -38,9 +41,9 @@ public class MoveBall : MonoBehaviour
             transform.position = Vector3.zero;
             speed = speedInici;
             rb.velocity = Vector3.zero;
-            Debug.Log("Die");
             islaunch = false;
             StartCoroutine(AutoLaunchBall(2f));
+            hud.lifeReduce();
         }
 
 

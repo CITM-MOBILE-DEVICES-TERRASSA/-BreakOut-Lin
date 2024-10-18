@@ -44,6 +44,7 @@ public class LevelGenerator : MonoBehaviour
                     brick = newBrick.AddComponent<Bricks>();
                 }
                 brick.health = j ;
+                brick.score = j ;
 
             }
         }

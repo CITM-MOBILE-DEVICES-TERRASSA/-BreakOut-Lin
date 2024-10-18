@@ -6,12 +6,21 @@ using UnityEngine;
 public class Bricks : MonoBehaviour
 {
     public int health;
+    public int score;
+    private HUD hud;
+
     private TextMeshProUGUI textMesh;
     private void Awake()
     {
         //// 获取 TextMeshPro 组件
         textMesh = GetComponentInChildren<TextMeshProUGUI>();
         UpdateHealthDisplay(); // 初始化时更新显示
+       
+    }
+
+    void Start()
+    {
+        hud = FindObjectOfType<HUD>();
     }
     public void UpdateHealthDisplay()
     {
@@ -33,6 +42,7 @@ public class Bricks : MonoBehaviour
         {
             if (this.health <= 0)
             {
+                hud.AddScore(score+1);
                 Destroy(this.gameObject);
             }
             else {
