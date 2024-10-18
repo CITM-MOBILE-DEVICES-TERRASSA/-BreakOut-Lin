@@ -36,6 +36,15 @@ public class LevelGenerator : MonoBehaviour
                 newBrick.transform.localScale = new Vector3(brickWidth, brickHeight, 1); // 调整砖块的尺寸
                 newBrick.transform.position = startPosition + new Vector3(i * (brickWidth + spacing), j * (brickHeight + spacing), 0);
                 newBrick.GetComponent<SpriteRenderer>().color = gradient.Evaluate((float)j / (size.y - 1));
+
+                // 获取或添加 Brick 脚本并设置初始生命值
+                Bricks brick = newBrick.GetComponent<Bricks>();
+                if (brick == null)
+                {
+                    brick = newBrick.AddComponent<Bricks>();
+                }
+                brick.health = j ;
+
             }
         }
     }
