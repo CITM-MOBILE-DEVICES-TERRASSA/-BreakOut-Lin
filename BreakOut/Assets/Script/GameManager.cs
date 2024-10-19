@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour
         GameData gameData = saveManager.LoadGame();
         if (gameData != null)
         {
-            hud.life = gameData.playerLives;
-            hud.MaxScore = gameData.score;
+                //hud.life = gameData.playerLives;
+                //hud.MaxScore = gameData.score;
 
             // 删除场景中现有的砖块
             Bricks[] existingBricks = FindObjectsOfType<Bricks>();

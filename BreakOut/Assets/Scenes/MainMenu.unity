@@ -515,10 +515,13 @@ MonoBehaviour:
   continueButton: {fileID: 365719655}
   quitButton: {fileID: 992335976}
   stopButton: {fileID: 0}
-  settingsButton: {fileID: 0}
   returnToMenuButton: {fileID: 0}
   newGameFromOverButton: {fileID: 0}
   quitFromOverButton: {fileID: 0}
+  closeButton: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  iaButton: {fileID: 0}
+  padding: {fileID: 0}
 --- !u!4 &366283083
 Transform:
   m_ObjectHideFlags: 0
@@ -773,6 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 797477603}
   - component: {fileID: 797477602}
+  - component: {fileID: 797477604}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -792,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b5e17015195de44879c08fd56d4346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hud: {fileID: 0}
 --- !u!4 &797477603
 Transform:
   m_ObjectHideFlags: 0
@@ -807,6 +812,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797477604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797477601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b922b7b7ade754b8c4ae0bd80f7de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &992335975
 GameObject:
   m_ObjectHideFlags: 0
