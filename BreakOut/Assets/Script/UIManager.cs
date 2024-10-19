@@ -18,12 +18,15 @@ public class UIManager : MonoBehaviour
 
     // Main Game Buttons
     public Button stopButton;
-    public Button settingsButton;
 
     // Game Over Buttons
     public Button returnToMenuButton;
     public Button newGameFromOverButton;
     public Button quitFromOverButton;
+
+    public Button closeButton;        // 拖拽你的 CloseButton 到这个字段
+    public GameObject settingsPanel; // 拖拽你的 SettingsPanel 到这个字段
+
 
     void Start()
     {
@@ -48,11 +51,6 @@ public class UIManager : MonoBehaviour
         else
             Debug.LogWarning("Stop Button is not assigned!");
 
-        if (settingsButton != null)
-            settingsButton.onClick.AddListener(OnSettingsButtonClicked);
-        else
-            Debug.LogWarning("Settings Button is not assigned!");
-
         if (returnToMenuButton != null)
             returnToMenuButton.onClick.AddListener(OnReturnToMenuClicked);
         else
@@ -67,6 +65,13 @@ public class UIManager : MonoBehaviour
             quitFromOverButton.onClick.AddListener(OnQuitFromOverClicked);
         else
             Debug.LogWarning("Quit From Over Button is not assigned!");
+
+        if (closeButton != null)
+            closeButton.onClick.AddListener(CloseSettingsPanel);
+        else
+            Debug.LogWarning("Quit From Close Button is not assigned!");
+
+
 
         // Set UI based on the current scene
         UpdateUIForCurrentScene();
@@ -94,7 +99,7 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("Activating Main Game UI");
             mainMenuUI.SetActive(false);
-
+            settingsPanel.SetActive(false);
             if (gameUI != null)
                 gameUI.SetActive(true);
             if (gameOverUI != null)
@@ -142,24 +147,13 @@ public class UIManager : MonoBehaviour
 
     void OnStopButtonClicked()
     {
-        // Handle stopping the game (e.g., pause game)
+        // 显示设置面板
+        settingsPanel.SetActive(true);
+        //// Handle stopping the game (e.g., pause game)
         GameManager.instance.PauseGame();
-        if (gameUI != null)
-        {
-            gameUI.SetActive(false);
-        }
-        if (gameOverUI != null)
-        {
-            gameOverUI.SetActive(true);
-        }
     }
 
-    void OnSettingsButtonClicked()
-    {
-        // Handle settings functionality
-        Debug.Log("Settings button clicked");
-        // Here you can add your settings logic
-    }
+
 
     void OnReturnToMenuClicked()
     {
@@ -179,6 +173,14 @@ public class UIManager : MonoBehaviour
     {
         // Quit the application from Game Over screen
         Application.Quit();
+    }
+
+
+    public void CloseSettingsPanel()
+    {
+        Debug.Log("ClosePanel");
+        settingsPanel.SetActive(false);
+        GameManager.instance.ResumeGame();
     }
 
     void Update()
