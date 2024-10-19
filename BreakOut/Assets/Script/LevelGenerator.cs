@@ -11,8 +11,12 @@ public class LevelGenerator : MonoBehaviour
     public float wallHeightRatio = 0.3f; // 墙的高度占屏幕高度的比例（如0.3表示30%）
     public Gradient gradient;
 
+    public static LevelGenerator instance; // 用于全局访问
+
+
     private void Awake()
     {
+       
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize * 2;
 
@@ -48,6 +52,7 @@ public class LevelGenerator : MonoBehaviour
 
             }
         }
+        instance = this;
     }
 
 

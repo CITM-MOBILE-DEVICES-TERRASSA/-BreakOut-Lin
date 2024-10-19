@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
     void OnContinueButtonClicked()
     {
         // Continue the game
-        GameManager.instance.ResumeGame();
+        GameManager.instance.LoadGame();
         if (gameUI != null)
         {
             gameUI.SetActive(true);
