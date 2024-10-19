@@ -28,6 +28,9 @@ public class HUD : MonoBehaviour
     public void lifeReduce()
     {
         life -= 1;
+        if(life <= 0) {
+            GameManager.instance.GameOver();
+        }
     }
 
     // Update is called once per frame
