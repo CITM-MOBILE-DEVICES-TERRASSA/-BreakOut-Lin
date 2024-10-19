@@ -24,9 +24,11 @@ public class UIManager : MonoBehaviour
     public Button newGameFromOverButton;
     public Button quitFromOverButton;
 
-    public Button closeButton;        // 拖拽你的 CloseButton 到这个字段
-    public GameObject settingsPanel; // 拖拽你的 SettingsPanel 到这个字段
+    public Button closeButton;       
+    public GameObject settingsPanel; 
 
+    public Button iaButton;
+    public Padding padding;
 
     void Start()
     {
@@ -71,7 +73,10 @@ public class UIManager : MonoBehaviour
         else
             Debug.LogWarning("Quit From Close Button is not assigned!");
 
-
+        if (iaButton != null)
+            iaButton.onClick.AddListener(IAPlayer);
+        else
+            Debug.LogWarning("Quit From IA Button is not assigned!");
 
         // Set UI based on the current scene
         UpdateUIForCurrentScene();
@@ -181,6 +186,16 @@ public class UIManager : MonoBehaviour
         Debug.Log("ClosePanel");
         settingsPanel.SetActive(false);
         GameManager.instance.ResumeGame();
+    }
+
+    public void IAPlayer()
+    {
+        if (padding.isAutoMode) {
+            padding.isAutoMode = false;
+        }else
+        {
+            padding.isAutoMode = true;
+        }
     }
 
     void Update()
