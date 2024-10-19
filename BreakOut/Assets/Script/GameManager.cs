@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
 
 
     private SaveManager saveManager;
-    public int playerLives = 3;
-    public int score = 0;
+    public HUD hud;
+
 
     void Awake()
     {
@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         GameData gameData = new GameData();
-        gameData.playerLives = playerLives;
-        gameData.score = score;
+        gameData.playerLives = hud.life;
+        gameData.score = hud.MaxScore;
 
         // 获取所有 Bricks 组件并保存它们的状态
         Bricks[] bricks = FindObjectsOfType<Bricks>();
@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour
         GameData gameData = saveManager.LoadGame();
         if (gameData != null)
         {
-            playerLives = gameData.playerLives;
-            score = gameData.score;
+            hud.life = gameData.playerLives;
+            hud.MaxScore = gameData.score;
 
             // 删除场景中现有的砖块
             Bricks[] existingBricks = FindObjectsOfType<Bricks>();
@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         saveManager = GetComponent<SaveManager>();
+        hud = FindObjectOfType<HUD>();
     }
 
     // Update is called once per frame

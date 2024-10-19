@@ -11,8 +11,8 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI maxScoreText;
     public TextMeshProUGUI lifeText;
     public int Score;
-    private int MaxScore;
-    private int life = 3;
+    public int MaxScore;
+    public int life = 3;
 
 
     void Start()
