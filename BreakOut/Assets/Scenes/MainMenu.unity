@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 366283083}
   - component: {fileID: 366283082}
   m_Layer: 0
-  m_Name: Buttons
+  m_Name: UIMamager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,10 +508,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ede8198506634e4b9ac32bff60350a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 1240104899}
-  continueButton: {fileID: 0}
-  pauseButton: {fileID: 365719655}
+  mainMenuUI: {fileID: 366283081}
+  gameUI: {fileID: 1419110616}
+  gameOverUI: {fileID: 1419110616}
+  newGameButton: {fileID: 1240104899}
+  continueButton: {fileID: 365719655}
   quitButton: {fileID: 992335976}
+  stopButton: {fileID: 0}
+  settingsButton: {fileID: 0}
+  returnToMenuButton: {fileID: 0}
+  newGameFromOverButton: {fileID: 0}
+  quitFromOverButton: {fileID: 0}
 --- !u!4 &366283083
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,6 +1455,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 140}
   m_SizeDelta: {x: 219, y: 89.29999}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1419110616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419110617}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1419110617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419110616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 852.8142, y: 556.7203, z: -0.4703557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1456,3 +1494,4 @@ SceneRoots:
   - {fileID: 1206714019}
   - {fileID: 366283083}
   - {fileID: 797477603}
+  - {fileID: 1419110617}

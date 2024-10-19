@@ -6,69 +6,184 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // UI Elements
+    public GameObject mainMenuUI;  // Main Menu UI
+    public GameObject gameUI;       // Main Game UI (可以为空)
+    public GameObject gameOverUI;   // Game Over UI (可以为空)
 
-    public Button startButton;
+    // Main Menu Buttons
+    public Button newGameButton;
     public Button continueButton;
-    public Button pauseButton;
     public Button quitButton;
+
+    // Main Game Buttons
+    public Button stopButton;
+    public Button settingsButton;
+
+    // Game Over Buttons
+    public Button returnToMenuButton;
+    public Button newGameFromOverButton;
+    public Button quitFromOverButton;
 
     void Start()
     {
-        startButton.onClick.AddListener(OnStartButtonClicked);
-        pauseButton.onClick.AddListener(OnContinueButtonClicked);
-        pauseButton.onClick.AddListener(OnPauseButtonClicked);
-        quitButton.onClick.AddListener(OnQuitButtonClicked);
+        // Add listeners for buttons
+        if (newGameButton != null)
+            newGameButton.onClick.AddListener(OnNewGameButtonClicked);
+        else
+            Debug.LogWarning("New Game Button is not assigned!");
 
+        if (continueButton != null)
+            continueButton.onClick.AddListener(OnContinueButtonClicked);
+        else
+            Debug.LogWarning("Continue Button is not assigned!");
+
+        if (quitButton != null)
+            quitButton.onClick.AddListener(OnQuitButtonClicked);
+        else
+            Debug.LogWarning("Quit Button is not assigned!");
+
+        if (stopButton != null)
+            stopButton.onClick.AddListener(OnStopButtonClicked);
+        else
+            Debug.LogWarning("Stop Button is not assigned!");
+
+        if (settingsButton != null)
+            settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+        else
+            Debug.LogWarning("Settings Button is not assigned!");
+
+        if (returnToMenuButton != null)
+            returnToMenuButton.onClick.AddListener(OnReturnToMenuClicked);
+        else
+            Debug.LogWarning("Return to Menu Button is not assigned!");
+
+        if (newGameFromOverButton != null)
+            newGameFromOverButton.onClick.AddListener(OnNewGameFromOverClicked);
+        else
+            Debug.LogWarning("New Game From Over Button is not assigned!");
+
+        if (quitFromOverButton != null)
+            quitFromOverButton.onClick.AddListener(OnQuitFromOverClicked);
+        else
+            Debug.LogWarning("Quit From Over Button is not assigned!");
+
+        // Set UI based on the current scene
+        UpdateUIForCurrentScene();
     }
-
-    void OnStartButtonClicked()
-    {
-        GameManager.instance.StartGame(); // 调用 GameManager 开始游戏的方法
-    }
-
-    void OnContinueButtonClicked()
-    {
-        GameManager.instance.PauseGame(); // 调用 GameManager 暂停游戏的方法
-    }
-
-    void OnPauseButtonClicked()
-    {
-        GameManager.instance.PauseGame(); // 调用 GameManager 暂停游戏的方法
-    }
-
-
-
-    void OnQuitButtonClicked()
-    {
-        GameManager.instance.EndGame(); // 调用 GameManager 结束游戏的方法
-    }
-
 
     void UpdateUIForCurrentScene()
     {
         string currentScene = SceneManager.GetActiveScene().name;
 
+        // Log the current scene for debugging
         Debug.Log(currentScene);
+
+        // Activate/deactivate UI elements based on the current scene
         if (currentScene == "MainMenu")
         {
-            startButton.gameObject.SetActive(true);
-            continueButton.gameObject.SetActive(false);
-            pauseButton.gameObject.SetActive(true);
-            quitButton.gameObject.SetActive(true);
+            Debug.Log("Activating Main Menu UI");
+            mainMenuUI.SetActive(true);
+
+            if (gameUI != null)
+                gameUI.SetActive(false);
+            if (gameOverUI != null)
+                gameOverUI.SetActive(false);
         }
         else if (currentScene == "MainGame")
         {
-            startButton.gameObject.SetActive(false);
-            continueButton.gameObject.SetActive(false);
-            pauseButton.gameObject.SetActive(false);
-            quitButton.gameObject.SetActive(false);
+            Debug.Log("Activating Main Game UI");
+            mainMenuUI.SetActive(false);
+
+            if (gameUI != null)
+                gameUI.SetActive(true);
+            if (gameOverUI != null)
+                gameOverUI.SetActive(false);
+        }
+        else if (currentScene == "GameOver")
+        {
+            Debug.Log("Activating Game Over UI");
+            mainMenuUI.SetActive(false);
+
+            if (gameUI != null)
+                gameUI.SetActive(false);
+            if (gameOverUI != null)
+                gameOverUI.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("No UI to activate for this scene");
         }
     }
 
-    // Update is called once per frame
+    void OnNewGameButtonClicked()
+    {
+        // Start a new game and load the main game scene
+        GameManager.instance.StartGame();
+        SceneManager.LoadScene("MainGame");
+    }
+
+    void OnContinueButtonClicked()
+    {
+        // Continue the game
+        GameManager.instance.ResumeGame();
+        if (gameUI != null)
+        {
+            gameUI.SetActive(true);
+        }
+        mainMenuUI.SetActive(false);
+    }
+
+    void OnQuitButtonClicked()
+    {
+        // Quit the application
+        Application.Quit();
+    }
+
+    void OnStopButtonClicked()
+    {
+        // Handle stopping the game (e.g., pause game)
+        GameManager.instance.PauseGame();
+        if (gameUI != null)
+        {
+            gameUI.SetActive(false);
+        }
+        if (gameOverUI != null)
+        {
+            gameOverUI.SetActive(true);
+        }
+    }
+
+    void OnSettingsButtonClicked()
+    {
+        // Handle settings functionality
+        Debug.Log("Settings button clicked");
+        // Here you can add your settings logic
+    }
+
+    void OnReturnToMenuClicked()
+    {
+        // Return to the main menu
+        GameManager.instance.ReturnToMainMenu();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    void OnNewGameFromOverClicked()
+    {
+        // Start a new game from the Game Over screen
+        GameManager.instance.StartGame();
+        SceneManager.LoadScene("MainGame");
+    }
+
+    void OnQuitFromOverClicked()
+    {
+        // Quit the application from Game Over screen
+        Application.Quit();
+    }
+
     void Update()
     {
-        //UpdateUIForCurrentScene();
+        // Call this if you need to update UI every frame
+        // UpdateUIForCurrentScene();
     }
 }

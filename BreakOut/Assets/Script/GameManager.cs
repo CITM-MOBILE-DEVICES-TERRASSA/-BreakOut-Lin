@@ -55,9 +55,13 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Application.Quit();
-        Debug.Log("Game Ended");
-        // 显示结束界面或返回主菜单等逻辑
     }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
 
     void Start()
     {
