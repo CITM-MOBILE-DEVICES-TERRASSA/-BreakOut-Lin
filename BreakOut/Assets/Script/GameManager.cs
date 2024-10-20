@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public static GameManager instance;
-
-
     private SaveManager saveManager;
-    public HUD hud;
+    public bool isNewGame = true;
 
+    public int Score;
+    public int MaxScore;
+    public int life = 3;
 
     void Awake()
     {
@@ -31,14 +33,17 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadSceneAsync(1);
+        life = 3;
+        Score = 0;
+        isNewGame = true;
         Debug.Log("Game Started");
         // 启动游戏逻辑，比如加载游戏场景或重置得分
     }
 
     public void ContinueGame ()
     {
-        Debug.Log("Game Paused");
-        Time.timeScale = 0; // 暂停游戏
+        SceneManager.LoadSceneAsync(1);
+        isNewGame = false;
     }
     public void PauseGame()
     {
@@ -71,10 +76,11 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
+        Debug.Log("Life:" + life);
         GameData gameData = new GameData();
-        gameData.playerLives = hud.life;
-        gameData.score = hud.MaxScore;
-
+        gameData.playerLives = life;
+        gameData.score = MaxScore;
+       
         // 获取所有 Bricks 组件并保存它们的状态
         Bricks[] bricks = FindObjectsOfType<Bricks>();
         foreach (Bricks brick in bricks)
@@ -93,39 +99,63 @@ public class GameManager : MonoBehaviour
         saveManager.SaveGame(gameData);
     }
 
-    public void LoadGame()
-    {
-        GameData gameData = saveManager.LoadGame();
-        if (gameData != null)
-        {
-                //hud.life = gameData.playerLives;
-                //hud.MaxScore = gameData.score;
+    //public void LoadGame()
+    //{
+    //    // 直接指定 JSON 文件的路径
+    //    string filePath = "D:\\Github\\BreakOut-Lin\\BreakOut\\Assets\\Script\\SaveData\\savegame.json";
 
-            // 删除场景中现有的砖块
-            Bricks[] existingBricks = FindObjectsOfType<Bricks>();
-            foreach (Bricks brick in existingBricks)
-            {
-                Destroy(brick.gameObject);
-            }
+    //    if (File.Exists(filePath))
+    //    {
+    //        string jsonData = File.ReadAllText(filePath);
+    //        GameData gameData = JsonUtility.FromJson<GameData>(jsonData);
 
-            // 使用保存的数据重新生成砖块
-            foreach (GameData.WallData wallData in gameData.walls)
-            {
-                // 创建新的砖块实例
-                GameObject newBrick = Instantiate(LevelGenerator.instance.brickPrefab, wallData.position, Quaternion.identity);
-                Bricks brick = newBrick.GetComponent<Bricks>();
-                brick.health = wallData.health;
-                brick.UpdateHealthDisplay();
-                newBrick.SetActive(!wallData.isDestroyed); // 如果砖块之前被摧毁，则在加载时设置为不激活
-            }
-        }
-    }
+    //        if (gameData != null)
+    //        {
+    //            // 更新玩家生命和得分
+    //            life = gameData.playerLives;
+    //            MaxScore = gameData.score;
+
+    //            // 删除场景中现有的砖块
+    //            Bricks[] existingBricks = FindObjectsOfType<Bricks>();
+    //            foreach (Bricks brick in existingBricks)
+    //            {
+    //                Destroy(brick.gameObject);
+    //            }
+
+    //            // 使用保存的数据重新生成砖块
+    //            foreach (GameData.WallData wallData in gameData.walls)
+    //            {
+    //                // 创建新的砖块实例
+    //                GameObject newBrick = Instantiate(LevelGenerator.instance.brickPrefab, wallData.position, Quaternion.identity);
+    //                Bricks brick = newBrick.GetComponent<Bricks>();
+
+    //                if (brick != null)
+    //                {
+    //                    brick.health = wallData.health;
+    //                    brick.UpdateHealthDisplay();
+    //                    newBrick.SetActive(!wallData.isDestroyed); // 如果砖块之前被摧毁，则在加载时设置为不激活
+    //                }
+    //                else
+    //                {
+    //                    Debug.LogError("Bricks component not found on the instantiated object.");
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Debug.LogError("Failed to parse game data from JSON.");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Game data JSON file not found: " + filePath);
+    //    }
+    //}
 
 
     void Start()
     {
         saveManager = GetComponent<SaveManager>();
-        hud = FindObjectOfType<HUD>();
     }
 
     // Update is called once per frame

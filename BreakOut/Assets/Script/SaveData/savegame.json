@@ -194,6 +194,14 @@
         },
         {
             "position": {
+                "x": 0.7957644462585449,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
                 "x": -0.6288304328918457,
                 "y": 3.4700000286102297
             },
@@ -220,128 +228,176 @@
             "position": {
                 "x": -0.6288304328918457,
                 "y": 1.5500000715255738
-            },
-            "health": 0,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -2.0534257888793947,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -2.0534257888793947,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -2.0534257888793947,
-                "y": 2.190000057220459
-            },
-            "health": 2,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -2.0534257888793947,
-                "y": 1.5500000715255738
-            },
-            "health": 0,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -3.478020429611206,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -3.478020429611206,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -3.478020429611206,
-                "y": 2.190000057220459
-            },
-            "health": 2,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -3.478020429611206,
-                "y": 1.5500000715255738
-            },
-            "health": 0,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -4.902615547180176,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -4.902615547180176,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -4.902615547180176,
-                "y": 2.190000057220459
-            },
-            "health": 2,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -4.902615547180176,
-                "y": 1.5500000715255738
-            },
-            "health": 0,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -6.327210426330566,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -6.327210426330566,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -6.327210426330566,
-                "y": 2.190000057220459
             },
             "health": 1,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -0.6288304328918457,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.0534257888793947,
+                "y": 3.4700000286102297
+            },
+            "health": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.0534257888793947,
+                "y": 2.8299999237060549
+            },
+            "health": 3,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.0534257888793947,
+                "y": 2.190000057220459
+            },
+            "health": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.0534257888793947,
+                "y": 1.5500000715255738
+            },
+            "health": 1,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.0534257888793947,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.478020429611206,
+                "y": 3.4700000286102297
+            },
+            "health": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.478020429611206,
+                "y": 2.8299999237060549
+            },
+            "health": 3,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.478020429611206,
+                "y": 2.190000057220459
+            },
+            "health": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.478020429611206,
+                "y": 1.5500000715255738
+            },
+            "health": 1,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.478020429611206,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -4.902615547180176,
+                "y": 3.4700000286102297
+            },
+            "health": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -4.902615547180176,
+                "y": 2.8299999237060549
+            },
+            "health": 3,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -4.902615547180176,
+                "y": 2.190000057220459
+            },
+            "health": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -4.902615547180176,
+                "y": 1.5500000715255738
+            },
+            "health": 1,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -4.902615547180176,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.327210426330566,
+                "y": 3.4700000286102297
+            },
+            "health": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.327210426330566,
+                "y": 2.8299999237060549
+            },
+            "health": 3,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.327210426330566,
+                "y": 2.190000057220459
+            },
+            "health": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.327210426330566,
+                "y": 1.5500000715255738
+            },
+            "health": 1,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.327210426330566,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
             "isDestroyed": false
         }
     ],

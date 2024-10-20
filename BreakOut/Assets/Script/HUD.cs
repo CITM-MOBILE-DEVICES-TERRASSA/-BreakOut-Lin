@@ -10,9 +10,7 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI scoreText;    
     public TextMeshProUGUI maxScoreText;
     public TextMeshProUGUI lifeText;
-    public int Score;
-    public int MaxScore;
-    public int life = 3;
+
 
 
     void Start()
@@ -22,13 +20,13 @@ public class HUD : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        Score += amount;
+        GameManager.instance.Score += amount;
     }
 
     public void lifeReduce()
     {
-        life -= 1;
-        if(life <= 0) {
+        GameManager.instance.life -= 1;
+        if(GameManager.instance.life <= 0) {
             GameManager.instance.GameOver();
         }
     }
@@ -39,17 +37,17 @@ public class HUD : MonoBehaviour
 
         if (scoreText != null)
         {
-            scoreText.text = "Score: "+ Score; // 更新文本内容为当前生命值
+            scoreText.text = "Score: "+ GameManager.instance.Score; // 更新文本内容为当前生命值
         }
 
         if (maxScoreText != null)
         {
-            maxScoreText.text = "MaxScore: "+ MaxScore; // 更新文本内容为当前生命值
+            maxScoreText.text = "MaxScore: "+ GameManager.instance.MaxScore; // 更新文本内容为当前生命值
         }
 
         if (maxScoreText != null)
         {
-            lifeText.text = "Life: "+ life; // 更新文本内容为当前生命值
+            lifeText.text = "Life: "+ GameManager.instance.life; // 更新文本内容为当前生命值
         }
     }
 

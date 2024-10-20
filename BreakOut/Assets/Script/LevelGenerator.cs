@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using System.IO;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -16,7 +18,73 @@ public class LevelGenerator : MonoBehaviour
 
     private void Awake()
     {
-       
+
+        string path = "D:\\Github\\BreakOut-Lin\\BreakOut\\Assets\\Script\\SaveData\\savegame.json";
+
+        if (GameManager.instance.isNewGame)
+        {
+            NewGame();
+        }
+        else {
+            LoadGame(path);
+        }
+      
+        
+    }
+
+
+    private void LoadGame(string filePath)
+    {
+        string json = File.ReadAllText(filePath);
+        GameData gameData = JsonUtility.FromJson<GameData>(json);
+
+        // 清空当前砖块（如果需要）
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
+        float screenHeight = Camera.main.orthographicSize * 2;
+
+        // 根据屏幕大小计算墙的宽高
+        float wallWidth = screenWidth * wallWidthRatio;
+        float wallHeight = screenHeight * wallHeightRatio;
+
+        // 计算砖块的宽度和高度，使其适应墙的尺寸，同时考虑间距
+        float brickWidth = (wallWidth - (size.x - 1) * spacing) / size.x;
+        float brickHeight = (wallHeight - (size.y - 1) * spacing) / size.y;
+
+        // 计算砖块的起始位置，使整个墙在屏幕中居中显示
+        // 计算砖块的起始位置，使整个墙在屏幕中居中显示
+        Vector3 startPosition = transform.position - new Vector3(wallWidth / 12 - brickWidth / 2, wallHeight - brickHeight / 24, 0);
+
+
+        // 根据保存的数据创建砖块
+        foreach (GameData.WallData wallData in gameData.walls)
+        {
+            GameObject newBrick = Instantiate(brickPrefab, transform);
+            newBrick.transform.localScale = new Vector3(brickWidth, brickHeight, 1); // 调整砖块的尺寸
+            newBrick.transform.position = startPosition + new Vector3(wallData.position.x, wallData.position.y, 0); // 使用保存的数据设置位置
+
+            // 获取或添加 Brick 脚本并设置生命值
+            Bricks brick = newBrick.GetComponent<Bricks>();
+            if (brick == null)
+            {
+                brick = newBrick.AddComponent<Bricks>();
+            }
+            brick.health = wallData.health;
+            brick.isDestroyed = wallData.isDestroyed; // 根据是否被摧毁设置状态
+        }
+
+        // 如果需要，设置玩家的生命和分数
+        GameManager.instance.life = gameData.playerLives;
+        GameManager.instance.MaxScore = gameData.score;
+    }
+
+
+
+    private void NewGame() {
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize * 2;
 
@@ -47,17 +115,13 @@ public class LevelGenerator : MonoBehaviour
                 {
                     brick = newBrick.AddComponent<Bricks>();
                 }
-                brick.health = j ;
-                brick.score = j ;
+                brick.health = j;
+                brick.score = j;
 
             }
         }
         instance = this;
     }
-
-
-
-
 
 
     void Start()
