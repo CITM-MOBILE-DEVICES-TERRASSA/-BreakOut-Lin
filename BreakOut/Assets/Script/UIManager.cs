@@ -26,7 +26,10 @@ public class UIManager : MonoBehaviour
     public Button quitFromOverButton;
 
     public Button closeButton;       
-    public GameObject settingsPanel; 
+    public GameObject settingsPanel;
+
+    public Button NextLevelButton;
+    public GameObject NextLevelPanel;
 
     public Button iaButton;
     public Padding padding;
@@ -73,6 +76,11 @@ public class UIManager : MonoBehaviour
             closeButton.onClick.AddListener(CloseSettingsPanel);
         else
             Debug.LogWarning("Quit From Close Button is not assigned!");
+
+        if (NextLevelButton != null)
+            NextLevelButton.onClick.AddListener(CloseNextLevelPanel);
+        else
+            Debug.LogWarning("Quit From Next Button is not assigned!");
 
         if (iaButton != null)
             iaButton.onClick.AddListener(IAPlayer);
@@ -167,7 +175,6 @@ public class UIManager : MonoBehaviour
     {
         // œ‘ æ…Ë÷√√Ê∞Â
         settingsPanel.SetActive(true);
-        //// Handle stopping the game (e.g., pause game)
         GameManager.instance.PauseGame();
     }
 
@@ -200,6 +207,15 @@ public class UIManager : MonoBehaviour
         settingsPanel.SetActive(false);
         GameManager.instance.ResumeGame();
     }
+
+    public void CloseNextLevelPanel()
+    {
+        Debug.Log("ClosePanel");
+        NextLevelPanel.SetActive(false);
+        GameManager.instance.ResumeGame();
+    }
+
+    
 
     public void IAPlayer()
     {

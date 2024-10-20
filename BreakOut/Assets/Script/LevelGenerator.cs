@@ -16,7 +16,7 @@ public class LevelGenerator : MonoBehaviour
     public Bricks bricks;
     public bool finishChangeLevel = true;
     public static LevelGenerator instance; // 用于全局访问
-
+    public UIManager uimanager;
 
     private void Awake()
     {
@@ -142,7 +142,7 @@ public class LevelGenerator : MonoBehaviour
     {
         moveBall = FindObjectOfType<MoveBall>();
         bricks = FindObjectOfType<Bricks>();
-       
+        uimanager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -162,6 +162,8 @@ public class LevelGenerator : MonoBehaviour
             }
             finishChangeLevel = false;
             GameManager.instance.bricksDestroyed = 0;
+            uimanager.NextLevelPanel.SetActive(true);
+            GameManager.instance.PauseGame();
         }
 
         Debug.Log("bricksDestroyed :" + GameManager.instance.bricksDestroyed);

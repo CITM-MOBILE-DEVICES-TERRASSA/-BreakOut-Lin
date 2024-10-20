@@ -42,6 +42,14 @@ public class MoveBall : MonoBehaviour
             hud.lifeReduce();
         }
 
+        //const float minYVelocity = 0.5f;
+
+        //if (Mathf.Abs(rb.velocity.y) < minYVelocity)
+        //{
+        //    // 如果y方向的速度太小，强制增加y方向的速度
+        //    rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
+        //}
+
 
         if (!islaunch && padding != null)
         {
@@ -63,7 +71,7 @@ public class MoveBall : MonoBehaviour
     }
     void LaunchBall()
     {
-        velocity.x = Random.Range(-1f, 1f);
+        velocity.x = Random.Range(0, 2) == 0 ? -1 : 1;
         velocity.y = 1;
         rb.velocity = velocity.normalized * speed;
         islaunch = true; 
@@ -79,6 +87,14 @@ public class MoveBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+
+        const float minYVelocity = 0.5f;
+
+        if (Mathf.Abs(rb.velocity.y) < minYVelocity)
+        {
+            // 设置y方向的最小速度，保持球不会卡死在水平运动
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
+        }
 
         if (speed >= maxVelocity)
         {
