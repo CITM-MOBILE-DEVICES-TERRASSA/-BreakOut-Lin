@@ -7,7 +7,7 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        savePath = Path.Combine(Application.persistentDataPath, "D:\\Github\\BreakOut-Lin\\BreakOut\\Assets\\Script\\SaveData\\savegame.json");
+        savePath = Path.Combine(Application.persistentDataPath, Application.dataPath+"\\Script\\SaveData\\savegame.json");
     }
 
     public void SaveGame(GameData gameData)

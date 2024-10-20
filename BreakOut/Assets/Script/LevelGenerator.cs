@@ -79,7 +79,8 @@ public class LevelGenerator : MonoBehaviour
 
         // 如果需要，设置玩家的生命和分数
         GameManager.instance.life = gameData.playerLives;
-        GameManager.instance.MaxScore = gameData.score;
+        GameManager.instance.MaxScore = gameData.Maxscore;
+        GameManager.instance.Score = gameData.score;
     }
 
 

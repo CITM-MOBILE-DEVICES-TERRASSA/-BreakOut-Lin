@@ -8,6 +8,7 @@ public class GameData
     public List<WallData> walls = new List<WallData>();
     public int playerLives;
     public int score;
+    public int Maxscore;
 
     [System.Serializable]
     public class WallData
