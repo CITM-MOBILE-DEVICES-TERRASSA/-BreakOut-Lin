@@ -9,12 +9,15 @@ public class GameData
     public int playerLives;
     public int score;
     public int Maxscore;
+    public int level;
+    public int blockisDestroyed;
 
     [System.Serializable]
     public class WallData
     {
         public Vector2 position; // 墙的坐标
         public int health;       // 墙的生命值
+        public int blockScore;       // 墙的生命值
         public bool isDestroyed; // 墙是否被摧毁
     }
 }

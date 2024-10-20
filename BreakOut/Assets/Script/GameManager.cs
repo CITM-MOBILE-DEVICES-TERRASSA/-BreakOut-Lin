@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.SocialPlatforms.Impl;
 
+
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,7 +17,8 @@ public class GameManager : MonoBehaviour
     public int Score;
     public int MaxScore;
     public int life = 3;
-
+    public int bricksDestroyed = 0;
+    public int level = 1;
     void Awake()
     {
         if (instance == null)
@@ -86,6 +88,8 @@ public class GameManager : MonoBehaviour
         GameData gameData = new GameData();
         gameData.playerLives = life;
         gameData.score = Score;
+        gameData.blockisDestroyed = bricksDestroyed;
+        gameData.level = level;
         if (Score > MaxScore)
         {
             gameData.Maxscore = Score;
@@ -103,7 +107,9 @@ public class GameManager : MonoBehaviour
             {
                 position = brick.transform.position,
                 health = brick.health,
+                blockScore = brick.score,
                 isDestroyed = !brick.gameObject.activeSelf // 如果砖块被摧毁，则保存为 true
+
             };
 
             gameData.walls.Add(wallData);

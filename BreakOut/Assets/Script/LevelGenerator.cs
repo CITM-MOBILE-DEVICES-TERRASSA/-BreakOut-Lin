@@ -12,7 +12,9 @@ public class LevelGenerator : MonoBehaviour
     public float wallWidthRatio = 0.8f; // 墙的宽度占屏幕宽度的比例（如0.8表示80%）
     public float wallHeightRatio = 0.3f; // 墙的高度占屏幕高度的比例（如0.3表示30%）
     public Gradient gradient;
-
+    public MoveBall moveBall;
+    public Bricks bricks;
+    public bool finishChangeLevel = true;
     public static LevelGenerator instance; // 用于全局访问
 
 
@@ -26,10 +28,10 @@ public class LevelGenerator : MonoBehaviour
             NewGame();
         }
         else {
+           
             LoadGame(path);
         }
-      
-        
+
     }
 
 
@@ -74,6 +76,7 @@ public class LevelGenerator : MonoBehaviour
                 brick = newBrick.AddComponent<Bricks>();
             }
             brick.health = wallData.health;
+            brick.score = wallData.blockScore;
             brick.isDestroyed = wallData.isDestroyed; // 根据是否被摧毁设置状态
         }
 
@@ -81,11 +84,14 @@ public class LevelGenerator : MonoBehaviour
         GameManager.instance.life = gameData.playerLives;
         GameManager.instance.MaxScore = gameData.Maxscore;
         GameManager.instance.Score = gameData.score;
+        GameManager.instance.bricksDestroyed = gameData.blockisDestroyed;
+        GameManager.instance.level = gameData.level;
     }
 
 
 
     private void NewGame() {
+        Debug.Log("NEWGAME");
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize * 2;
 
@@ -116,9 +122,16 @@ public class LevelGenerator : MonoBehaviour
                 {
                     brick = newBrick.AddComponent<Bricks>();
                 }
-                brick.health = j;
-                brick.score = j;
 
+                if (GameManager.instance.level == 1)
+                {
+                    brick.health = j;
+                    brick.score = j;
+                }
+                else {
+                    brick.health = j * 2;
+                    brick.score = j * 2;
+                }
             }
         }
         instance = this;
@@ -127,11 +140,40 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        moveBall = FindObjectOfType<MoveBall>();
+        bricks = FindObjectOfType<Bricks>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if(GameManager.instance.Score == 150) {
+        //    level = 2;
+        //}
+
+        if ((size.x * size.y) == GameManager.instance.bricksDestroyed) {
+            if (GameManager.instance.level == 1)
+            {
+                GameManager.instance.level = 2;
+            }
+            else {
+                GameManager.instance.level = 1;
+            }
+            finishChangeLevel = false;
+            GameManager.instance.bricksDestroyed = 0;
+        }
+
+        Debug.Log("bricksDestroyed :" + GameManager.instance.bricksDestroyed);
+
+        if (!finishChangeLevel) {
+            NewGame();
+            GameManager.instance.SaveGame();
+            moveBall.ResetBall();
+            finishChangeLevel = true;
+        }
+
+
 
     }
 }

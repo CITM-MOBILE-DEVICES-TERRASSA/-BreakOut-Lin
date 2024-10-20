@@ -38,11 +38,7 @@ public class MoveBall : MonoBehaviour
         Vector3 newPosition = transform.position + new Vector3(0, 1, 0) * speed * Time.deltaTime;
         if (newPosition.y < screenBounds.y * -1 - squareHeight)
         {
-            transform.position = Vector3.zero;
-            speed = speedInici;
-            rb.velocity = Vector3.zero;
-            islaunch = false;
-            StartCoroutine(AutoLaunchBall(2f));
+            ResetBall();
             hud.lifeReduce();
         }
 
@@ -56,6 +52,14 @@ public class MoveBall : MonoBehaviour
         {
             LaunchBall();
         }
+    }
+
+    public void ResetBall() {
+        transform.position = Vector3.zero;
+        speed = speedInici;
+        rb.velocity = Vector3.zero;
+        islaunch = false;
+        StartCoroutine(AutoLaunchBall(2f));
     }
     void LaunchBall()
     {

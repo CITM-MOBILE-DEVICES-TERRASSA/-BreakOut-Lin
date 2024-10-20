@@ -2,270 +2,458 @@
     "walls": [
         {
             "position": {
-                "x": 6.232958793640137,
+                "x": 6.736042022705078,
                 "y": 3.4700000286102297
             },
-            "health": 3,
+            "health": 8,
+            "blockScore": 8,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 6.232958793640137,
+                "x": 6.736042022705078,
                 "y": 2.8299999237060549
             },
-            "health": 2,
+            "health": 6,
+            "blockScore": 6,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 6.232958793640137,
+                "x": 6.736042022705078,
                 "y": 2.190000057220459
             },
-            "health": 2,
+            "health": 4,
+            "blockScore": 4,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 6.232958793640137,
+                "x": 6.736042022705078,
                 "y": 1.5500000715255738
             },
-            "health": 1,
+            "health": 2,
+            "blockScore": 2,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 6.232958793640137,
+                "x": 6.736042022705078,
                 "y": 0.9100000858306885
             },
             "health": 0,
+            "blockScore": 0,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 4.866405487060547,
+                "x": 5.257692337036133,
                 "y": 3.4700000286102297
             },
-            "health": 4,
+            "health": 8,
+            "blockScore": 8,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 4.866405487060547,
+                "x": 5.257692337036133,
                 "y": 2.8299999237060549
             },
-            "health": 3,
+            "health": 6,
+            "blockScore": 6,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 4.866405487060547,
+                "x": 5.257692337036133,
                 "y": 2.190000057220459
             },
-            "health": 2,
+            "health": 4,
+            "blockScore": 4,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 4.866405487060547,
+                "x": 5.257692337036133,
                 "y": 1.5500000715255738
             },
-            "health": 1,
+            "health": 2,
+            "blockScore": 2,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 4.866405487060547,
+                "x": 5.257692337036133,
                 "y": 0.9100000858306885
             },
             "health": 0,
+            "blockScore": 0,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 3.4998512268066408,
+                "x": 3.779341697692871,
                 "y": 3.4700000286102297
             },
-            "health": 4,
+            "health": 8,
+            "blockScore": 8,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 3.4998512268066408,
+                "x": 3.779341697692871,
                 "y": 2.8299999237060549
             },
-            "health": 3,
+            "health": 6,
+            "blockScore": 6,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 3.4998512268066408,
+                "x": 3.779341697692871,
                 "y": 2.190000057220459
             },
-            "health": 2,
+            "health": 4,
+            "blockScore": 4,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": 3.4998512268066408,
+                "x": 3.779341697692871,
                 "y": 1.5500000715255738
             },
-            "health": 0,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": 2.1332969665527345,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": 2.1332969665527345,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": 0.7667436599731445,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": 0.7667436599731445,
-                "y": 2.8299999237060549
-            },
             "health": 2,
+            "blockScore": 2,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -0.5998101234436035,
-                "y": 3.4700000286102297
-            },
-            "health": 4,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -0.5998101234436035,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -0.5998101234436035,
-                "y": 2.190000057220459
+                "x": 3.779341697692871,
+                "y": 0.9100000858306885
             },
             "health": 0,
+            "blockScore": 0,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -1.9663643836975098,
+                "x": 2.300992012023926,
                 "y": 3.4700000286102297
             },
-            "health": 4,
+            "health": 8,
+            "blockScore": 8,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -1.9663643836975098,
+                "x": 2.300992012023926,
                 "y": 2.8299999237060549
             },
-            "health": 3,
+            "health": 6,
+            "blockScore": 6,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -1.9663643836975098,
+                "x": 2.300992012023926,
                 "y": 2.190000057220459
-            },
-            "health": 1,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -3.3329179286956789,
-                "y": 3.4700000286102297
             },
             "health": 4,
+            "blockScore": 4,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -3.3329179286956789,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -3.3329179286956789,
-                "y": 2.190000057220459
+                "x": 2.300992012023926,
+                "y": 1.5500000715255738
             },
             "health": 2,
+            "blockScore": 2,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -4.699471950531006,
+                "x": 2.300992012023926,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": 0.8226418495178223,
                 "y": 3.4700000286102297
             },
-            "health": 4,
+            "health": 8,
+            "blockScore": 8,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -4.699471950531006,
+                "x": 0.8226418495178223,
                 "y": 2.8299999237060549
             },
-            "health": 3,
+            "health": 6,
+            "blockScore": 6,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -4.699471950531006,
+                "x": 0.8226418495178223,
                 "y": 2.190000057220459
-            },
-            "health": 1,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -6.066025733947754,
-                "y": 3.4700000286102297
             },
             "health": 4,
+            "blockScore": 4,
             "isDestroyed": false
         },
         {
             "position": {
-                "x": -6.066025733947754,
-                "y": 2.8299999237060549
-            },
-            "health": 3,
-            "isDestroyed": false
-        },
-        {
-            "position": {
-                "x": -6.066025733947754,
-                "y": 2.190000057220459
+                "x": 0.8226418495178223,
+                "y": 1.5500000715255738
             },
             "health": 2,
+            "blockScore": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": 0.8226418495178223,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -0.6557083129882813,
+                "y": 3.4700000286102297
+            },
+            "health": 8,
+            "blockScore": 8,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -0.6557083129882813,
+                "y": 2.8299999237060549
+            },
+            "health": 6,
+            "blockScore": 6,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -0.6557083129882813,
+                "y": 2.190000057220459
+            },
+            "health": 4,
+            "blockScore": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -0.6557083129882813,
+                "y": 1.5500000715255738
+            },
+            "health": 2,
+            "blockScore": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -0.6557083129882813,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.1340584754943849,
+                "y": 3.4700000286102297
+            },
+            "health": 8,
+            "blockScore": 8,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.1340584754943849,
+                "y": 2.8299999237060549
+            },
+            "health": 6,
+            "blockScore": 6,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.1340584754943849,
+                "y": 2.190000057220459
+            },
+            "health": 4,
+            "blockScore": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.1340584754943849,
+                "y": 1.5500000715255738
+            },
+            "health": 2,
+            "blockScore": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -2.1340584754943849,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.6124086380004885,
+                "y": 3.4700000286102297
+            },
+            "health": 8,
+            "blockScore": 8,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.6124086380004885,
+                "y": 2.8299999237060549
+            },
+            "health": 6,
+            "blockScore": 6,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.6124086380004885,
+                "y": 2.190000057220459
+            },
+            "health": 4,
+            "blockScore": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.6124086380004885,
+                "y": 1.5500000715255738
+            },
+            "health": 2,
+            "blockScore": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -3.6124086380004885,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -5.090758800506592,
+                "y": 3.4700000286102297
+            },
+            "health": 8,
+            "blockScore": 8,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -5.090758800506592,
+                "y": 2.8299999237060549
+            },
+            "health": 6,
+            "blockScore": 6,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -5.090758800506592,
+                "y": 2.190000057220459
+            },
+            "health": 4,
+            "blockScore": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -5.090758800506592,
+                "y": 1.5500000715255738
+            },
+            "health": 2,
+            "blockScore": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -5.090758800506592,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.569108963012695,
+                "y": 3.4700000286102297
+            },
+            "health": 8,
+            "blockScore": 8,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.569108963012695,
+                "y": 2.8299999237060549
+            },
+            "health": 6,
+            "blockScore": 6,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.569108963012695,
+                "y": 2.190000057220459
+            },
+            "health": 4,
+            "blockScore": 4,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.569108963012695,
+                "y": 1.5500000715255738
+            },
+            "health": 2,
+            "blockScore": 2,
+            "isDestroyed": false
+        },
+        {
+            "position": {
+                "x": -6.569108963012695,
+                "y": 0.9100000858306885
+            },
+            "health": 0,
+            "blockScore": 0,
             "isDestroyed": false
         }
     ],
-    "playerLives": 2,
-    "score": 28,
-    "Maxscore": 28
+    "playerLives": 3,
+    "score": 150,
+    "Maxscore": 406,
+    "level": 2,
+    "blockisDestroyed": 0
 }

@@ -9,7 +9,7 @@ public class Bricks : MonoBehaviour
     public int score;
     public bool isDestroyed;
     private HUD hud;
-
+   
     private TextMeshProUGUI textMesh;
     private void Awake()
     {
@@ -46,6 +46,7 @@ public class Bricks : MonoBehaviour
                 hud.AddScore(score+1);
                 this.isDestroyed = true;
                 Destroy(this.gameObject);
+                GameManager.instance.bricksDestroyed +=1;
             }
             else {
                 this.health -= 1;

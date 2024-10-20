@@ -45,8 +45,10 @@ public class Padding : MonoBehaviour
 
     void AutoMoveToBall()
     {
+        float randomOffsetX = Random.Range(-0.5f, 0.5f);
+
         // 自动追踪球的位置，只在水平轴上移动
-        Vector3 targetPosition = new Vector3(ballTransform.position.x, transform.position.y, transform.position.z);
+        Vector3 targetPosition = new Vector3(ballTransform.position.x + randomOffsetX, transform.position.y, transform.position.z);
 
         // 插值移动到目标位置，确保平滑移动
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
