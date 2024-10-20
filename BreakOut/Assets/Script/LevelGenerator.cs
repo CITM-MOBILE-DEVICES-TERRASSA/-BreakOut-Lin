@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
 
-        string path = "D:\\Github\\BreakOut-Lin\\BreakOut\\Assets\\Script\\SaveData\\savegame.json";
+        string path = Path.Combine(Application.persistentDataPath, Application.dataPath + "\\Script\\SaveData\\savegame.json");
 
         if (GameManager.instance.isNewGame)
         {

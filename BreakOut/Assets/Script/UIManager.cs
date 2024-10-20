@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -135,13 +136,25 @@ public class UIManager : MonoBehaviour
 
     void OnContinueButtonClicked()
     {
-        // Continue the game
-        GameManager.instance.ContinueGame(); 
-        if (gameUI != null)
+
+        string relativePath = "\\Script\\SaveData\\savegame.json";
+
+        // 获取文件完整路径
+        string savePath = Application.dataPath + relativePath;
+
+        // 检查文件是否存在
+        if (File.Exists(savePath))
         {
-            gameUI.SetActive(true);
+            // Continue the game
+            GameManager.instance.ContinueGame();
+            if (gameUI != null)
+            {
+                gameUI.SetActive(true);
+            }
+            mainMenuUI.SetActive(false);
         }
-        mainMenuUI.SetActive(false);
+
+       
     }
 
     void OnQuitButtonClicked()

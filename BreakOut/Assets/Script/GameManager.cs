@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,9 +33,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        string path = Path.Combine(Application.persistentDataPath, Application.dataPath + "\\Script\\SaveData\\savegame.json");
+        string json = File.ReadAllText(path);
+        GameData gameData = JsonUtility.FromJson<GameData>(json);
         SceneManager.LoadSceneAsync(1);
+        
         life = 3;
         Score = 0;
+        MaxScore = gameData.Maxscore;
         isNewGame = true;
         Debug.Log("Game Started");
         // 启动游戏逻辑，比如加载游戏场景或重置得分
@@ -79,8 +85,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Life:" + life);
         GameData gameData = new GameData();
         gameData.playerLives = life;
-        gameData.Maxscore = MaxScore;
         gameData.score = Score;
+        if (Score > MaxScore)
+        {
+            gameData.Maxscore = Score;
+        }
+        else {
+            gameData.Maxscore = MaxScore;
+        }
+
        
         // 获取所有 Bricks 组件并保存它们的状态
         Bricks[] bricks = FindObjectsOfType<Bricks>();
