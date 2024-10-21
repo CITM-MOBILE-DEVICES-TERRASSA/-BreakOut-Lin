@@ -171,7 +171,7 @@ public class LevelGenerator : MonoBehaviour
             GameManager.instance.PauseGame();
         }
 
-        Debug.Log("bricksDestroyed :" + GameManager.instance.bricksDestroyed);
+        
 
         if (!finishChangeLevel) {
             NewGame();

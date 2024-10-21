@@ -94,6 +94,13 @@ public class MoveBall : MonoBehaviour
         {
             // 设置y方向的最小速度，保持球不会卡死在水平运动
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
+            rb.gravityScale = 10;
+    
+            Debug.Log("Y DANGER");
+        }
+        else {
+
+            rb.gravityScale = 0;
         }
 
         if (speed >= maxVelocity)
