@@ -19,6 +19,7 @@ public class MoveBall : MonoBehaviour
     private bool islaunch = false;
     public GameObject padding;
     private Rigidbody2D rb;
+    
 
     private HUD hud;
     void Start()
@@ -46,7 +47,7 @@ public class MoveBall : MonoBehaviour
 
         //if (Mathf.Abs(rb.velocity.y) < minYVelocity)
         //{
-        //    // Èç¹ûy·½ÏòµÄËÙ¶ÈÌ«Ð¡£¬Ç¿ÖÆÔö¼Óy·½ÏòµÄËÙ¶È
+        //    // ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½Ì«Ð¡ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
         //    rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
         //}
 
@@ -78,8 +79,8 @@ public class MoveBall : MonoBehaviour
     }
     private IEnumerator AutoLaunchBall(float delay)
     {
-        yield return new WaitForSeconds(delay); // µÈ´ýÖ¸¶¨µÄÑÓ³ÙÊ±¼ä
-        if (!islaunch) // Ö»ÓÐÔÚÎ´·¢ÉäµÄÇé¿öÏÂ²Å·¢Éä
+        yield return new WaitForSeconds(delay); // ï¿½È´ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½Ê±ï¿½ï¿½
+        if (!islaunch) // Ö»ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²Å·ï¿½ï¿½ï¿½
         {
             LaunchBall();
         }
@@ -90,11 +91,11 @@ public class MoveBall : MonoBehaviour
 
         const float minYVelocity = 0.5f;
 
-        if (Mathf.Abs(rb.velocity.y) < minYVelocity)
+        if (Mathf.Abs(rb.velocity.y) < minYVelocity && islaunch == true)
         {
-            // ÉèÖÃy·½ÏòµÄ×îÐ¡ËÙ¶È£¬±£³ÖÇò²»»á¿¨ËÀÔÚË®Æ½ÔË¶¯
+            // ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ù¶È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò²»»á¿¨ï¿½ï¿½ï¿½ï¿½Ë®Æ½ï¿½Ë¶ï¿½
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
-            rb.gravityScale = 10;
+            rb.gravityScale = 5;
     
             Debug.Log("Y DANGER");
         }

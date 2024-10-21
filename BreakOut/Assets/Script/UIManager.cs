@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
 {
     // UI Elements
     public GameObject mainMenuUI;  // Main Menu UI
-    public GameObject gameUI;       // Main Game UI (¿ÉÒÔÎª¿Õ)
-    public GameObject gameOverUI;   // Game Over UI (¿ÉÒÔÎª¿Õ)
+    public GameObject gameUI;       // Main Game UI (ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½)
+    public GameObject gameOverUI;   // Game Over UI (ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½)
 
     // Main Menu Buttons
     public Button newGameButton;
@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
 
     public Button iaButton;
     public Padding padding;
+
+    private ScreenOrientation lastOrientation;
 
 
     void Start()
@@ -88,13 +90,11 @@ public class UIManager : MonoBehaviour
         else
             Debug.LogWarning("Quit From IA Button is not assigned!");
 
-
-       
-
         // Set UI based on the current scene
         UpdateUIForCurrentScene();
     }
 
+    
     void UpdateUIForCurrentScene()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -151,10 +151,10 @@ public class UIManager : MonoBehaviour
 
         string relativePath = "\\Script\\SaveData\\savegame.json";
 
-        // »ñÈ¡ÎÄ¼þÍêÕûÂ·¾¶
+        // ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
         string savePath = Application.dataPath + relativePath;
 
-        // ¼ì²éÎÄ¼þÊÇ·ñ´æÔÚ
+        // ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
         if (File.Exists(savePath))
         {
             // Continue the game
@@ -177,7 +177,7 @@ public class UIManager : MonoBehaviour
 
     void OnStopButtonClicked()
     {
-        // ÏÔÊ¾ÉèÖÃÃæ°å
+        // ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         settingsPanel.SetActive(true);
         GameManager.instance.PauseGame();
     }
