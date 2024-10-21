@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public int life = 3;
     public int bricksDestroyed = 0;
     public int level = 1;
+
+    public Color brickColor;
     void Awake()
     {
         if (instance == null)
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour
         gameData.score = Score;
         gameData.blockisDestroyed = bricksDestroyed;
         gameData.level = level;
+ 
         if (Score > MaxScore)
         {
             gameData.Maxscore = Score;
@@ -108,6 +111,7 @@ public class GameManager : MonoBehaviour
                 position = brick.transform.position,
                 health = brick.health,
                 blockScore = brick.score,
+                brickColor = brick.brickcolor,
                 isDestroyed = !brick.gameObject.activeSelf // 如果砖块被摧毁，则保存为 true
 
             };

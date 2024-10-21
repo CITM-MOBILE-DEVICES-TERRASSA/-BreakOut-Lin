@@ -35,19 +35,29 @@ public class HUD : MonoBehaviour
     void Update()
     {
 
+        
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        
+        int fontSize = Mathf.RoundToInt(Mathf.Min(screenWidth, screenHeight) * 0.05f);
+
         if (scoreText != null)
         {
-            scoreText.text = "Score: "+ GameManager.instance.Score; // 更新文本内容为当前生命值
+            scoreText.text = "Score: " + GameManager.instance.Score;
+            scoreText.fontSize = fontSize; 
         }
 
         if (maxScoreText != null)
         {
-            maxScoreText.text = "MaxScore: "+ GameManager.instance.MaxScore; // 更新文本内容为当前生命值
+            maxScoreText.text = "MaxScore: " + GameManager.instance.MaxScore; 
+            maxScoreText.fontSize = fontSize; 
         }
 
-        if (maxScoreText != null)
+        if (lifeText != null)
         {
-            lifeText.text = "Life: "+ GameManager.instance.life; // 更新文本内容为当前生命值
+            lifeText.text = "Life: " + GameManager.instance.life; 
+            lifeText.fontSize = fontSize; 
         }
     }
 

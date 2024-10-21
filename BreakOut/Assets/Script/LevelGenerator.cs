@@ -78,6 +78,8 @@ public class LevelGenerator : MonoBehaviour
             brick.health = wallData.health;
             brick.score = wallData.blockScore;
             brick.isDestroyed = wallData.isDestroyed; // 根据是否被摧毁设置状态
+            brick.GetComponent<SpriteRenderer>().color = wallData.brickColor;
+            brick.brickcolor = wallData.brickColor;
         }
 
         // 如果需要，设置玩家的生命和分数
@@ -115,6 +117,8 @@ public class LevelGenerator : MonoBehaviour
                 newBrick.transform.localScale = new Vector3(brickWidth, brickHeight, 1); // 调整砖块的尺寸
                 newBrick.transform.position = startPosition + new Vector3(i * (brickWidth + spacing), j * (brickHeight + spacing), 0);
                 newBrick.GetComponent<SpriteRenderer>().color = gradient.Evaluate((float)j / (size.y - 1));
+                
+                Debug.Log("Color" + newBrick.GetComponent<SpriteRenderer>().color);
 
                 // 获取或添加 Brick 脚本并设置初始生命值
                 Bricks brick = newBrick.GetComponent<Bricks>();
@@ -132,6 +136,7 @@ public class LevelGenerator : MonoBehaviour
                     brick.health = j * 2;
                     brick.score = j * 2;
                 }
+                brick.brickcolor = gradient.Evaluate((float)j / (size.y - 1));
             }
         }
         instance = this;

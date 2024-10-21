@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     public Button iaButton;
     public Padding padding;
 
+
     void Start()
     {
         // Add listeners for buttons
@@ -86,6 +87,9 @@ public class UIManager : MonoBehaviour
             iaButton.onClick.AddListener(IAPlayer);
         else
             Debug.LogWarning("Quit From IA Button is not assigned!");
+
+
+       
 
         // Set UI based on the current scene
         UpdateUIForCurrentScene();
@@ -219,11 +223,17 @@ public class UIManager : MonoBehaviour
 
     public void IAPlayer()
     {
+        GameObject picture = GameObject.Find("IAButton/Button/ActiveAI");
         if (padding.isAutoMode) {
             padding.isAutoMode = false;
-        }else
+            picture.SetActive(false);
+
+
+        }
+        else
         {
             padding.isAutoMode = true;
+            picture.SetActive(true);
         }
     }
 
