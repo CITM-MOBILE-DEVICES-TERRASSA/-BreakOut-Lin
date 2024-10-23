@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1149ebcc91623e439dd12368be2fdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 5}
+  size: {x: 5, y: 10}
   brickPrefab: {fileID: 8563342483539399689, guid: ca88ae47f0800fd4ebaf05e06383a6fe, type: 3}
   spacing: 0.2
   wallWidthRatio: 0.8
