@@ -80,7 +80,6 @@ public class Padding : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("PoweeeeeerrrrrrUUUUPO");
         if (collider.gameObject.CompareTag("powerUp"))
         {
             GameManager.instance.life += 1;

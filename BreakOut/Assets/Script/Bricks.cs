@@ -26,6 +26,10 @@ public class Bricks : MonoBehaviour
     void Start()
     {
         hud = FindObjectOfType<HUD>();
+        if (hud == null)
+        {
+            Debug.LogError("HUD not found in the scene!");
+        }
     }
     public void UpdateHealthDisplay()
     {
