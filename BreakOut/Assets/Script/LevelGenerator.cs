@@ -6,17 +6,18 @@ using System.IO;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public Vector2Int size; // 横向砖块数量（x）和纵向砖块数量（y）
-    public GameObject brickPrefab;
+  
     public float spacing = 0.1f; // 用于设置砖块之间的间距比例
     public float wallWidthRatio = 0.8f; // 墙的宽度占屏幕宽度的比例（如0.8表示80%）
     public float wallHeightRatio = 0.3f; // 墙的高度占屏幕高度的比例（如0.3表示30%）
+    public bool finishChangeLevel = true;
+    public static LevelGenerator instance; // 用于全局访问
     public Gradient gradient;
     public MoveBall moveBall;
     public Bricks bricks;
-    public bool finishChangeLevel = true;
-    public static LevelGenerator instance; // 用于全局访问
     public UIManager uimanager;
+    public Vector2Int size; // 横向砖块数量（x）和纵向砖块数量（y）
+    public GameObject brickPrefab;
     public GameObject nextPanel_PC;
     public GameObject nextPanel_H;
     public GameObject nextPanel_V;

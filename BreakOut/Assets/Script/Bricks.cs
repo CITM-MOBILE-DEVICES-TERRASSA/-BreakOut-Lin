@@ -8,9 +8,9 @@ public class Bricks : MonoBehaviour
     public int health;
     public int score;
     public bool isDestroyed;
+    public bool hasPowerUp;
     public Color brickcolor;
     public Vector3 startPosition;
-    public bool hasPowerUp;
     public GameObject powerUp;
     private HUD hud;
     private List<GameObject> activePowerUps = new List<GameObject>();

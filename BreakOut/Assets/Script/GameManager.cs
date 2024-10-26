@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         isNewGame = true;
         Debug.Log("Game Started");
         audioSource.Play();
+        bricksDestroyed = 0;
         // 启动游戏逻辑，比如加载游戏场景或重置得分
     }
 

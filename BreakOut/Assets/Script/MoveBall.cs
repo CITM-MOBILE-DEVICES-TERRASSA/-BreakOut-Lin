@@ -7,18 +7,16 @@ public class MoveBall : MonoBehaviour
     public float speed = 3;
     public float maxVelocity = 15;
     public float speedIncrement = 0.5f;
+    public float offsetY = 0.5f;
+    public GameObject padding;
+    public AudioSource audioSource;
 
     private float speedInici = 10f;
-    private Vector2 screenBounds;
     private float squareHeight;
-
-    private Vector2 velocity;
-    public float offsetY = 0.5f;
     private bool islaunch = false;
-    public GameObject padding;
+    private Vector2 velocity;
+    private Vector2 screenBounds;
     private Rigidbody2D rb;
-
-    AudioSource audioSource;
     private HUD hud;
 
     void Start()
@@ -99,7 +97,6 @@ public class MoveBall : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
             rb.gravityScale = 5;
-            Debug.Log("Y DANGER");
         }
         else
         {
