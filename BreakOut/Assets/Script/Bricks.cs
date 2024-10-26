@@ -10,8 +10,10 @@ public class Bricks : MonoBehaviour
     public bool isDestroyed;
     public Color brickcolor;
     public Vector3 startPosition;
+    public bool hasPowerUp;
+    public GameObject powerUp;
     private HUD hud;
-   
+    private List<GameObject> activePowerUps = new List<GameObject>();
     private TextMeshProUGUI textMesh;
     private void Awake()
     {
@@ -49,10 +51,24 @@ public class Bricks : MonoBehaviour
                 this.isDestroyed = true;
                 Destroy(this.gameObject);
                 GameManager.instance.bricksDestroyed +=1;
+                if (this.hasPowerUp) {
+                    GameObject newPowerUp = Instantiate(powerUp, this.transform.position, Quaternion.identity);
+                    activePowerUps.Add(newPowerUp);
+                }
             }
             else {
                 this.health -= 1;
             }
+        }
+
+    }
+
+    public void RemovePowerUp(GameObject powerUpToRemove)
+    {
+        if (activePowerUps.Contains(powerUpToRemove))
+        {
+            activePowerUps.Remove(powerUpToRemove);
+            Destroy(powerUpToRemove); 
         }
     }
 

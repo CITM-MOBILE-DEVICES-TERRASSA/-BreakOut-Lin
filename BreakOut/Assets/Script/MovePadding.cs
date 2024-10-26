@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Padding : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class Padding : MonoBehaviour
     public Transform ballTransform;        // 追踪的球的位置
     public bool isAutoMode = false;        // 是否启用自动模式
 
+    public Bricks bricks;
     void Start()
     {
         // 获取屏幕边界
@@ -73,5 +76,24 @@ public class Padding : MonoBehaviour
         // 限制挡板在屏幕内移动
         float clampedX = Mathf.Clamp(transform.position.x, screenBounds.x * -1 + squareWidth, screenBounds.x - squareWidth);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("PoweeeeeerrrrrrUUUUPO");
+        if (collider.gameObject.CompareTag("powerUp"))
+        {
+            GameManager.instance.life += 1;
+            // 获取与 powerUp 关联的 Bricks 脚本
+            Bricks bricks = collider.gameObject.GetComponent<Bricks>();
+            if (bricks != null)
+            {
+                // 调用 RemovePowerUp 方法并传入当前的 powerUp 对象
+                bricks.RemovePowerUp(collider.gameObject);
+            }
+
+            // 这里可以选择直接销毁 powerUp，或保留管理（如果有其他逻辑需要处理）
+            Destroy(collider.gameObject);
+        }
     }
 }

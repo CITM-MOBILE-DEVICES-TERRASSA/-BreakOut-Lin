@@ -388,6 +388,10 @@ MonoBehaviour:
   health: 1
   score: 0
   isDestroyed: 0
+  brickcolor: {r: 0, g: 0, b: 0, a: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  hasPowerUp: 0
+  powerUp: {fileID: 4827329591679376409, guid: 9d9f3862297df364db25112be2eb4d97, type: 3}
 --- !u!222 &7757532491880699810
 CanvasRenderer:
   m_ObjectHideFlags: 0

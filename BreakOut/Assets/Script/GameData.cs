@@ -11,7 +11,6 @@ public class GameData
     public int Maxscore;
     public int level;
     public int blockisDestroyed;
-    public string screenOrientation; // 新增字段
 
 
     [System.Serializable]
@@ -23,6 +22,7 @@ public class GameData
         public Color brickColor;       // 墙的生命值
         public bool isDestroyed; // 墙是否被摧毁
         public Vector3 startPosition;
+        public bool hasPowerUp;
     }
 }
 

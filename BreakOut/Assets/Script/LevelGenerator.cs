@@ -48,19 +48,7 @@ public class LevelGenerator : MonoBehaviour
 
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize * 2;
-        string savedOrientation = gameData.screenOrientation;
         int numRows, numCols;
-
-        if (savedOrientation == "Landscape")
-        {
-            numRows = size.y;
-            numCols = size.x;
-        }
-        else // Portrait
-        {
-            numRows = size.x;
-            numCols = size.y;
-        }
 
         // 根据横竖屏模式选择砖块数量
          numRows = (screenWidth > screenHeight) ? size.y : size.x; // 横屏时行数使用size.y，竖屏时使用size.x
@@ -165,10 +153,9 @@ public class LevelGenerator : MonoBehaviour
                 }
                 brick.brickcolor = gradient.Evaluate((float)j / (numRows - 1));
                 brick.startPosition = startPosition;
+                brick.hasPowerUp = Random.value < 0.5f; // 10% 概率
             }
         }
-        GameData gameData = new GameData();
-        gameData.screenOrientation = (screenWidth > screenHeight) ? "Landscape" : "Portrait";
 
         instance = this;
     }

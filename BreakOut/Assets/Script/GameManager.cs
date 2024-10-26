@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int level = 1;
     public Vector3 startPosition;
     private AudioSource audioSource;
+    public bool hasPowerUp;
 
     public Color brickColor;
     void Awake()
@@ -126,8 +127,8 @@ public class GameManager : MonoBehaviour
                 blockScore = brick.score,
                 brickColor = brick.brickcolor,
                 isDestroyed = !brick.gameObject.activeSelf, // 如果砖块被摧毁，则保存为 true
-                startPosition = brick.startPosition
-
+                startPosition = brick.startPosition,
+                hasPowerUp = brick.hasPowerUp
             };
 
             gameData.walls.Add(wallData);
