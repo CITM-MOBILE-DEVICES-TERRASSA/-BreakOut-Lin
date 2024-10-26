@@ -6,14 +6,15 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Padding : MonoBehaviour
 {
-    public float speed = 5f;               // 控制移动速度
-    private Vector2 screenBounds;          // 屏幕边界
-    private float squareWidth;             // 挡板的宽度
-
-    public Transform ballTransform;        // 追踪的球的位置
+    public float speed = 5f;
     public bool isAutoMode = false;        // 是否启用自动模式
-
     public Bricks bricks;
+    public Transform ballTransform;        // 追踪的球的位置
+    private float squareWidth; // 控制移动速度
+    private Vector2 screenBounds;          // 屏幕边界
+                // 挡板的宽度
+
+   
     void Start()
     {
         // 获取屏幕边界

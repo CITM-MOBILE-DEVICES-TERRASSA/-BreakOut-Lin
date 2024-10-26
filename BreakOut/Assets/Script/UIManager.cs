@@ -7,31 +7,24 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // UI Elements
-    public GameObject mainMenuUI;  // Main Menu UI
-    public GameObject gameUI;       // Main Game UI (����Ϊ��)
-    public GameObject gameOverUI;   // Game Over UI (����Ϊ��)
-
+ 
     // Main Menu Buttons
     public Button newGameButton;
     public Button continueButton;
     public Button quitButton;
-
-    // Main Game Buttons
     public Button stopButton;
-
-    // Game Over Buttons
     public Button returnToMenuButton;
     public Button newGameFromOverButton;
     public Button quitFromOverButton;
-
-    public Button closeButton;       
-    public GameObject settingsPanel;
-
+    public Button closeButton;
     public Button NextLevelButton;
-    public GameObject NextLevelPanel;
-
     public Button iaButton;
+
+    public GameObject settingsPanel;
+    public GameObject NextLevelPanel;
+    public GameObject mainMenuUI;  // Main Menu UI
+    public GameObject gameUI;       // Main Game UI (����Ϊ��)
+    public GameObject gameOverUI;   // Game Over UI (����Ϊ��)
     public Padding padding;
 
     private ScreenOrientation lastOrientation;
@@ -182,8 +175,6 @@ public class UIManager : MonoBehaviour
         GameManager.instance.PauseGame();
     }
 
-
-
     void OnReturnToMenuClicked()
     {
         // Return to the main menu
@@ -203,7 +194,6 @@ public class UIManager : MonoBehaviour
         // Quit the application from Game Over screen
         Application.Quit();
     }
-
 
     public void CloseSettingsPanel()
     {
@@ -225,8 +215,6 @@ public class UIManager : MonoBehaviour
         NextLevelPanel.SetActive(true);
         GameManager.instance.PauseGame();
     }
-
-
 
     public void IAPlayer()
     {
