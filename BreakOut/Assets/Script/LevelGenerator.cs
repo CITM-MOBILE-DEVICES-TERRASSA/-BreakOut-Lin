@@ -48,26 +48,41 @@ public class LevelGenerator : MonoBehaviour
 
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize * 2;
+        string savedOrientation = gameData.screenOrientation;
+        int numRows, numCols;
+
+        if (savedOrientation == "Landscape")
+        {
+            numRows = size.y;
+            numCols = size.x;
+        }
+        else // Portrait
+        {
+            numRows = size.x;
+            numCols = size.y;
+        }
+
+        // 根据横竖屏模式选择砖块数量
+         numRows = (screenWidth > screenHeight) ? size.y : size.x; // 横屏时行数使用size.y，竖屏时使用size.x
+         numCols = (screenWidth > screenHeight) ? size.x : size.y; // 横屏时列数使用size.x，竖屏时使用size.y
 
         // 根据屏幕大小计算墙的宽高
+        float wallWidthRatio = 0.8f; // 墙宽度占屏幕80%
+        float wallHeightRatio = 0.30f; // 墙高度占屏幕25%（修改为原来的50%的一半）
+
         float wallWidth = screenWidth * wallWidthRatio;
         float wallHeight = screenHeight * wallHeightRatio;
 
-        // 计算砖块的宽度和高度，使其适应墙的尺寸，同时考虑间距
-        float brickWidth = (wallWidth - (size.x - 1) * spacing) / size.x;
-        float brickHeight = (wallHeight - (size.y - 1) * spacing) / size.y;
-
-        // 计算砖块的起始位置，使整个墙在屏幕中居中显示
-        // 计算砖块的起始位置，使整个墙在屏幕中居中显示
-        Vector3 startPosition = transform.position - new Vector3(wallWidth / 12 - brickWidth / 2, wallHeight - brickHeight / 24, 0);
-
+        // 计算砖块的宽度和高度，同时考虑间距
+        float brickWidth = (wallWidth - (numCols - 1) * spacing) / numCols;
+        float brickHeight = (wallHeight - (numRows - 1) * spacing) / numRows;
 
         // 根据保存的数据创建砖块
         foreach (GameData.WallData wallData in gameData.walls)
         {
             GameObject newBrick = Instantiate(brickPrefab, transform);
             newBrick.transform.localScale = new Vector3(brickWidth, brickHeight, 1); // 调整砖块的尺寸
-            newBrick.transform.position = startPosition + new Vector3(wallData.position.x, wallData.position.y, 0); // 使用保存的数据设置位置
+            newBrick.transform.position = GameManager.instance.startPosition + new Vector3(wallData.position.x, wallData.position.y, 0); // 使用保存的数据设置位置
 
             // 获取或添加 Brick 脚本并设置生命值
             Bricks brick = newBrick.GetComponent<Bricks>();
@@ -92,32 +107,43 @@ public class LevelGenerator : MonoBehaviour
 
 
 
-    private void NewGame() {
+
+    private void NewGame()
+    {
         Debug.Log("NEWGAME");
+
+        // 获取屏幕宽高
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize * 2;
 
+        // 根据横竖屏模式选择砖块数量
+        int numRows = (screenWidth > screenHeight) ? size.y : size.x; // 横屏时行数使用size.y，竖屏时使用size.x
+        int numCols = (screenWidth > screenHeight) ? size.x : size.y; // 横屏时列数使用size.x，竖屏时使用size.y
+
         // 根据屏幕大小计算墙的宽高
+        float wallWidthRatio = 0.8f; // 墙宽度占屏幕80%
+        float wallHeightRatio = 0.30f; // 墙高度占屏幕25%（修改为原来的50%的一半）
+
         float wallWidth = screenWidth * wallWidthRatio;
         float wallHeight = screenHeight * wallHeightRatio;
 
-        // 计算砖块的宽度和高度，使其适应墙的尺寸，同时考虑间距
-        float brickWidth = (wallWidth - (size.x - 1) * spacing) / size.x;
-        float brickHeight = (wallHeight - (size.y - 1) * spacing) / size.y;
+        // 计算砖块的宽度和高度，同时考虑间距
+        float brickWidth = (wallWidth - (numCols - 1) * spacing) / numCols;
+        float brickHeight = (wallHeight - (numRows - 1) * spacing) / numRows;
 
         // 计算砖块的起始位置，使整个墙在屏幕中居中显示
         Vector3 startPosition = transform.position - new Vector3(wallWidth / 2 - brickWidth / 2, wallHeight / 2 - brickHeight / 2, 0);
 
         // 创建砖块
-        for (int i = 0; i < size.x; i++)
+        for (int i = 0; i < numCols; i++)
         {
-            for (int j = 0; j < size.y; j++)
+            for (int j = 0; j < numRows; j++)
             {
                 GameObject newBrick = Instantiate(brickPrefab, transform);
                 newBrick.transform.localScale = new Vector3(brickWidth, brickHeight, 1); // 调整砖块的尺寸
                 newBrick.transform.position = startPosition + new Vector3(i * (brickWidth + spacing), j * (brickHeight + spacing), 0);
-                newBrick.GetComponent<SpriteRenderer>().color = gradient.Evaluate((float)j / (size.y - 1));
-                
+                newBrick.GetComponent<SpriteRenderer>().color = gradient.Evaluate((float)j / (numRows - 1));
+
                 Debug.Log("Color" + newBrick.GetComponent<SpriteRenderer>().color);
 
                 // 获取或添加 Brick 脚本并设置初始生命值
@@ -129,18 +155,25 @@ public class LevelGenerator : MonoBehaviour
 
                 if (GameManager.instance.level == 1)
                 {
-                    brick.health = j;
-                    brick.score = j;
+                    brick.health = j ;  // 使用 j + 1 确保砖块生命值从1开始
+                    brick.score = j ;
                 }
-                else {
-                    brick.health = j * 2;
-                    brick.score = j * 2;
+                else
+                {
+                    brick.health = (j + 1) * 2;
+                    brick.score = (j + 1) * 2;
                 }
-                brick.brickcolor = gradient.Evaluate((float)j / (size.y - 1));
+                brick.brickcolor = gradient.Evaluate((float)j / (numRows - 1));
+                brick.startPosition = startPosition;
             }
         }
+        GameData gameData = new GameData();
+        gameData.screenOrientation = (screenWidth > screenHeight) ? "Landscape" : "Portrait";
+
         instance = this;
     }
+
+
 
 
     void Start()

@@ -9,6 +9,7 @@ public class Bricks : MonoBehaviour
     public int score;
     public bool isDestroyed;
     public Color brickcolor;
+    public Vector3 startPosition;
     private HUD hud;
    
     private TextMeshProUGUI textMesh;
