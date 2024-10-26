@@ -19,8 +19,8 @@ public class MoveBall : MonoBehaviour
     private bool islaunch = false;
     public GameObject padding;
     private Rigidbody2D rb;
-    
 
+    AudioSource audioSource;
     private HUD hud;
     void Start()
     {
@@ -31,6 +31,7 @@ public class MoveBall : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(AutoLaunchBall(2f));
         hud = FindObjectOfType<HUD>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,7 +64,8 @@ public class MoveBall : MonoBehaviour
         }
     }
 
-    public void ResetBall() {
+    public void ResetBall()
+    {
         transform.position = Vector3.zero;
         speed = speedInici;
         rb.velocity = Vector3.zero;
@@ -75,7 +77,7 @@ public class MoveBall : MonoBehaviour
         velocity.x = Random.Range(0, 2) == 0 ? -1 : 1;
         velocity.y = 1;
         rb.velocity = velocity.normalized * speed;
-        islaunch = true; 
+        islaunch = true;
     }
     private IEnumerator AutoLaunchBall(float delay)
     {
@@ -88,7 +90,10 @@ public class MoveBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (islaunch)
+        {
+            audioSource.Play();
+        }
         const float minYVelocity = 0.5f;
 
         if (Mathf.Abs(rb.velocity.y) < minYVelocity && islaunch == true)
@@ -96,10 +101,11 @@ public class MoveBall : MonoBehaviour
             // ����y�������С�ٶȣ������򲻻Ῠ����ˮƽ�˶�
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
             rb.gravityScale = 5;
-    
+
             Debug.Log("Y DANGER");
         }
-        else {
+        else
+        {
 
             rb.gravityScale = 0;
         }
@@ -108,7 +114,8 @@ public class MoveBall : MonoBehaviour
         {
             speed = 15;
         }
-        else {
+        else
+        {
             speed += speedIncrement;
             rb.velocity = rb.velocity.normalized * speed;
         }

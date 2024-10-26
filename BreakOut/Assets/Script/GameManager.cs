@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int life = 3;
     public int bricksDestroyed = 0;
     public int level = 1;
+    private AudioSource audioSource;
 
     public Color brickColor;
     void Awake()
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = true;
+        //audioSource.Pause();
     }
 
 
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
         MaxScore = gameData.Maxscore;
         isNewGame = true;
         Debug.Log("Game Started");
+        audioSource.Play();
         // 启动游戏逻辑，比如加载游戏场景或重置得分
     }
 
@@ -60,27 +66,32 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Paused");
         Time.timeScale = 0; // 暂停游戏
         SaveGame();
+        audioSource.Pause();
     }
 
     public void ResumeGame()
     {
         Debug.Log("Game Resumed");
         Time.timeScale = 1; // 恢复游戏
+        audioSource.UnPause();
     }
 
     public void GameOver()
     {
         SceneManager.LoadSceneAsync(2);
+        audioSource.Stop();
     }
 
     public void EndGame()
     {
         Application.Quit();
+        audioSource.Pause();
     }
 
     public void ReturnToMainMenu()
     {
         SceneManager.LoadSceneAsync(0);
+        audioSource.Pause();
     }
 
 

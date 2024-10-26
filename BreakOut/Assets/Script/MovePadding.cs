@@ -16,6 +16,23 @@ public class Padding : MonoBehaviour
         // 获取屏幕边界
         Camera mainCamera = Camera.main;
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
+
+        // 计算并设置挡板的宽度和高度比例
+        float targetWidth = screenBounds.x * 0.2f;   // 挡板宽度占屏幕宽度的20%
+        float targetHeight = screenBounds.y * 0.05f; // 挡板高度占屏幕高度的5%
+
+        // 获取当前挡板的实际宽度和高度
+        float currentWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x;
+        float currentHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y;
+
+        // 计算水平和垂直方向的缩放比例
+        float scaleFactorX = targetWidth / currentWidth;
+        float scaleFactorY = targetHeight / currentHeight;
+
+        // 设置挡板的宽度和高度
+        transform.localScale = new Vector3(scaleFactorX * transform.localScale.x, scaleFactorY * transform.localScale.y, transform.localScale.z);
+
+        // 更新挡板的宽度，用于后续边界限制
         squareWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
     }
 
@@ -48,7 +65,7 @@ public class Padding : MonoBehaviour
         float randomOffsetX = Random.Range(-0.5f, 0.5f);
 
         // 自动追踪球的位置，只在水平轴上移动
-        Vector3 targetPosition = new Vector3(ballTransform.position.x + randomOffsetX, transform.position.y, transform.position.z);
+        Vector3 targetPosition = new Vector3(ballTransform.position.x, transform.position.y, transform.position.z);
 
         // 插值移动到目标位置，确保平滑移动
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
