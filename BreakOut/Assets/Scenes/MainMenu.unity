@@ -2177,6 +2177,8 @@ MonoBehaviour:
   life: 3
   bricksDestroyed: 0
   level: 1
+  startPosition: {x: 0, y: 0, z: 0}
+  hasPowerUp: 0
   brickColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &797477603
 Transform:

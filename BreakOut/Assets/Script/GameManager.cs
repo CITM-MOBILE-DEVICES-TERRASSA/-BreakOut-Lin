@@ -9,21 +9,19 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public static GameManager instance;
-    private SaveManager saveManager;
-    public bool isNewGame = true;
-
     public int Score;
     public int MaxScore;
     public int life = 3;
     public int bricksDestroyed = 0;
     public int level = 1;
-    public Vector3 startPosition;
-    private AudioSource audioSource;
     public bool hasPowerUp;
-
+    public bool isNewGame = true;
     public Color brickColor;
+    public static GameManager instance;
+
+    private AudioSource audioSource;
+    private SaveManager saveManager;
+    public Vector3 startPosition;
     void Awake()
     {
         if (instance == null)
