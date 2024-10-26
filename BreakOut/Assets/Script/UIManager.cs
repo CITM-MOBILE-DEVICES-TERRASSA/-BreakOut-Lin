@@ -219,7 +219,14 @@ public class UIManager : MonoBehaviour
         GameManager.instance.ResumeGame();
     }
 
-    
+    public void OpenNextLevelPanel()
+    {
+        Debug.Log("ClosePanel");
+        NextLevelPanel.SetActive(true);
+        GameManager.instance.PauseGame();
+    }
+
+
 
     public void IAPlayer()
     {

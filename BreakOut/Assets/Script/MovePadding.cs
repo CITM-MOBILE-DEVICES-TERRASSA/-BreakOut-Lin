@@ -51,17 +51,36 @@ public class Padding : MonoBehaviour
             // 否则，使用玩家的输入来移动
             PlayerControl();
         }
+
+
     }
 
     void PlayerControl()
     {
+        // 获取屏幕的边界
         float m_horizontal = Input.GetAxis("Horizontal");
-        Vector3 newPosition = transform.position + new Vector3(m_horizontal, 0, 0) * speed * Time.deltaTime;
 
-        // 限制挡板在屏幕内移动
-        newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + squareWidth, screenBounds.x - squareWidth);
-        transform.position = newPosition;
+        // 如果有触摸输入，使用触摸位置控制挡板
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+
+            // 保持 y 轴位置不变，只更新 x 轴
+            touchPosition.y = transform.position.y;
+            transform.position = new Vector3(touchPosition.x, touchPosition.y, transform.position.z);
+        }
+        else
+        {
+            // 默认使用键盘控制
+            Vector3 newPosition = transform.position + new Vector3(m_horizontal, 0, 0) * speed * Time.deltaTime;
+
+            // 限制挡板在屏幕内移动
+            newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + squareWidth, screenBounds.x - squareWidth);
+            transform.position = newPosition;
+        }
     }
+
 
     void AutoMoveToBall()
     {

@@ -623,7 +623,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 100, y: -61}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &196744066
 MonoBehaviour:
@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1149ebcc91623e439dd12368be2fdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 5}
+  size: {x: 5, y: 2}
   brickPrefab: {fileID: 8563342483539399689, guid: ca88ae47f0800fd4ebaf05e06383a6fe, type: 3}
   spacing: 0.2
   wallWidthRatio: 0.8
@@ -1469,6 +1469,9 @@ MonoBehaviour:
   bricks: {fileID: 0}
   finishChangeLevel: 1
   uimanager: {fileID: 0}
+  nextPanel_PC: {fileID: 1853507905}
+  nextPanel_H: {fileID: 1723893494}
+  nextPanel_V: {fileID: 772821845}
 --- !u!4 &462285554
 Transform:
   m_ObjectHideFlags: 0

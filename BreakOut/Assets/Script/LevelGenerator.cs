@@ -17,6 +17,9 @@ public class LevelGenerator : MonoBehaviour
     public bool finishChangeLevel = true;
     public static LevelGenerator instance; // 用于全局访问
     public UIManager uimanager;
+    public GameObject nextPanel_PC;
+    public GameObject nextPanel_H;
+    public GameObject nextPanel_V;
 
     private void Awake()
     {
@@ -83,6 +86,7 @@ public class LevelGenerator : MonoBehaviour
             brick.isDestroyed = wallData.isDestroyed; // 根据是否被摧毁设置状态
             brick.GetComponent<SpriteRenderer>().color = wallData.brickColor;
             brick.brickcolor = wallData.brickColor;
+            brick.hasPowerUp = wallData.hasPowerUp;
         }
 
         // 如果需要，设置玩家的生命和分数
@@ -91,6 +95,7 @@ public class LevelGenerator : MonoBehaviour
         GameManager.instance.Score = gameData.score;
         GameManager.instance.bricksDestroyed = gameData.blockisDestroyed;
         GameManager.instance.level = gameData.level;
+
     }
 
 
@@ -148,12 +153,12 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else
                 {
-                    brick.health = (j + 1) * 2;
-                    brick.score = (j + 1) * 2;
+                    brick.health = j * 2;
+                    brick.score = j +  2;
                 }
                 brick.brickcolor = gradient.Evaluate((float)j / (numRows - 1));
                 brick.startPosition = startPosition;
-                brick.hasPowerUp = Random.value < 0.5f; // 10% 概率
+                brick.hasPowerUp = Random.value < 0.2f; // 10% 概率
             }
         }
 
@@ -187,11 +192,38 @@ public class LevelGenerator : MonoBehaviour
             }
             finishChangeLevel = false;
             GameManager.instance.bricksDestroyed = 0;
-            uimanager.NextLevelPanel.SetActive(true);
-            GameManager.instance.PauseGame();
+            //uimanager.OpenNextLevelPanel();
+
+            if (Screen.dpi == 96)
+            {
+                nextPanel_PC.SetActive(true);
+                nextPanel_H.SetActive(false);
+                nextPanel_V.SetActive(false);
+            }
+            else {
+                CheckScreenOrientation();
+            }
+                GameManager.instance.PauseGame();
+           
         }
 
-        
+
+
+        void CheckScreenOrientation()
+        {
+
+            if (Screen.width > Screen.height)
+            {
+                nextPanel_H.SetActive(true);
+                nextPanel_V.SetActive(false);
+            }
+            else
+            {
+
+                nextPanel_H.SetActive(false);
+                nextPanel_V.SetActive(true);
+            }
+        }
 
         if (!finishChangeLevel) {
             NewGame();

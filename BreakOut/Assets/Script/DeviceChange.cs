@@ -12,12 +12,6 @@ public class DeviceChange : MonoBehaviour
     void Start()
     {
         
-    
-        Debug.Log("Android" + Screen.dpi);
-    
-        
-
-        
          if (Screen.dpi == 96)
         {
             Debug.Log("PC");
