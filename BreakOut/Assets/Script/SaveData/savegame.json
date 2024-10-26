@@ -47,7 +47,7 @@
                 "x": 1.0578726530075074,
                 "y": 1.7999999523162842
             },
-            "health": 2,
+            "health": 1,
             "blockScore": 2,
             "brickColor": {
                 "r": 0.6556603908538818,
@@ -62,48 +62,6 @@
                 "z": 0.0
             },
             "hasPowerUp": false
-        },
-        {
-            "position": {
-                "x": 1.0578726530075074,
-                "y": 1.159999966621399
-            },
-            "health": 1,
-            "blockScore": 1,
-            "brickColor": {
-                "r": 0.8278301954269409,
-                "g": 0.013583571650087834,
-                "b": 0.013583571650087834,
-                "a": 1.0
-            },
-            "isDestroyed": false,
-            "startPosition": {
-                "x": -0.890939474105835,
-                "y": 0.5199999809265137,
-                "z": 0.0
-            },
-            "hasPowerUp": false
-        },
-        {
-            "position": {
-                "x": 1.0578726530075074,
-                "y": 0.5199999809265137
-            },
-            "health": 0,
-            "blockScore": 0,
-            "brickColor": {
-                "r": 1.0,
-                "g": 0.0,
-                "b": 0.0,
-                "a": 1.0
-            },
-            "isDestroyed": false,
-            "startPosition": {
-                "x": -0.890939474105835,
-                "y": 0.5199999809265137,
-                "z": 0.0
-            },
-            "hasPowerUp": true
         },
         {
             "position": {
@@ -124,7 +82,7 @@
                 "y": 0.5199999809265137,
                 "z": 0.0
             },
-            "hasPowerUp": false
+            "hasPowerUp": true
         },
         {
             "position": {
@@ -152,7 +110,7 @@
                 "x": -0.890939474105835,
                 "y": 1.7999999523162842
             },
-            "health": 2,
+            "health": 1,
             "blockScore": 2,
             "brickColor": {
                 "r": 0.6556603908538818,
@@ -167,53 +125,11 @@
                 "z": 0.0
             },
             "hasPowerUp": false
-        },
-        {
-            "position": {
-                "x": -0.890939474105835,
-                "y": 1.159999966621399
-            },
-            "health": 1,
-            "blockScore": 1,
-            "brickColor": {
-                "r": 0.8278301954269409,
-                "g": 0.013583571650087834,
-                "b": 0.013583571650087834,
-                "a": 1.0
-            },
-            "isDestroyed": false,
-            "startPosition": {
-                "x": -0.890939474105835,
-                "y": 0.5199999809265137,
-                "z": 0.0
-            },
-            "hasPowerUp": false
-        },
-        {
-            "position": {
-                "x": -0.890939474105835,
-                "y": 0.5199999809265137
-            },
-            "health": 0,
-            "blockScore": 0,
-            "brickColor": {
-                "r": 1.0,
-                "g": 0.0,
-                "b": 0.0,
-                "a": 1.0
-            },
-            "isDestroyed": false,
-            "startPosition": {
-                "x": -0.890939474105835,
-                "y": 0.5199999809265137,
-                "z": 0.0
-            },
-            "hasPowerUp": false
         }
     ],
     "playerLives": 3,
-    "score": 50,
-    "Maxscore": 413,
+    "score": 6,
+    "Maxscore": 56,
     "level": 1,
-    "blockisDestroyed": 0
+    "blockisDestroyed": 4
 }

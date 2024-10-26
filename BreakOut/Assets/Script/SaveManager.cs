@@ -12,17 +12,18 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame(GameData gameData)
     {
-        string json = JsonUtility.ToJson(gameData, true); // 将GameData对象转换为JSON字符串
-        File.WriteAllText(savePath, json); // 将JSON字符串保存到文件中
+        string json = JsonUtility.ToJson(gameData, true); // Convert the GameData object to a JSON string
+        File.WriteAllText(savePath, json);// Save the JSON string to a file
         Debug.Log("Game saved to " + savePath);
     }
 
     public GameData LoadGame()
     {
+        //si exixt path
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
-            GameData gameData = JsonUtility.FromJson<GameData>(json); // 将JSON字符串反序列化为GameData对象
+            GameData gameData = JsonUtility.FromJson<GameData>(json); // Deserialize the JSON string back into a GameData object
             Debug.Log("Game loaded from " + savePath);
             return gameData;
         }

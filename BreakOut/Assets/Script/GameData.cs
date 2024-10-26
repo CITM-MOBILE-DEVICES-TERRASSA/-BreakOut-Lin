@@ -16,11 +16,11 @@ public class GameData
     [System.Serializable]
     public class WallData
     {
-        public Vector2 position; // 墙的坐标
-        public int health;       // 墙的生命值
-        public int blockScore;       // 墙的生命值
-        public Color brickColor;       // 墙的生命值
-        public bool isDestroyed; // 墙是否被摧毁
+        public Vector2 position; 
+        public int health;       
+        public int blockScore;       
+        public Color brickColor;       
+        public bool isDestroyed;
         public Vector3 startPosition;
         public bool hasPowerUp;
     }

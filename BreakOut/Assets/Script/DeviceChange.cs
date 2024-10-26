@@ -11,9 +11,10 @@ public class DeviceChange : MonoBehaviour
         public GameObject Game_PC;
     void Start()
     {
-        
+        //Check is PC o Simulator
          if (Screen.dpi == 96)
         {
+            //if is PC Active pcUiManager
             Debug.Log("PC");
             Game_PC.SetActive(true);
             Game_V.SetActive(false);
@@ -21,27 +22,28 @@ public class DeviceChange : MonoBehaviour
         }
         else
         {
-            // 这是在移动设备上运行
-            Debug.Log("mobil");
+            //if is Simulator Active Simulator UiManager
+            Debug.Log("Simulator");
             lastOrientation = Screen.orientation;
             CheckScreenOrientation();
 
         }
     }
 
-    // Update is called once per frame
+
 
     void CheckScreenOrientation()
     {
-
+        //For inici
         if (Screen.width > Screen.height)
         {
+            //if is landscape 
             Game_H.SetActive(true);
             Game_V.SetActive(false);
         }
         else
         {
-       
+            //if is portrait  
             Game_H.SetActive(false);
             Game_V.SetActive(true);
         }
@@ -49,6 +51,7 @@ public class DeviceChange : MonoBehaviour
 
     void HandleOrientationChange(ScreenOrientation orientation)
     {
+        //for in game
         switch (orientation)
         {
         case ScreenOrientation.Portrait:
@@ -69,11 +72,13 @@ public class DeviceChange : MonoBehaviour
     }
     void Update()
     {
+        // in game, not PC mode
          if (Screen.dpi != 96)
         {
         if (Screen.orientation != lastOrientation)
         {
-            lastOrientation = Screen.orientation;
+                // in game, check is Landscape or Portrait
+                lastOrientation = Screen.orientation;
             HandleOrientationChange(lastOrientation);
         }
         }

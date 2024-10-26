@@ -770,9 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ede8198506634e4b9ac32bff60350a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuUI: {fileID: 1643983415}
-  gameUI: {fileID: 202882597}
-  gameOverUI: {fileID: 1643983415}
   newGameButton: {fileID: 0}
   continueButton: {fileID: 0}
   quitButton: {fileID: 0}
@@ -781,10 +778,13 @@ MonoBehaviour:
   newGameFromOverButton: {fileID: 0}
   quitFromOverButton: {fileID: 0}
   closeButton: {fileID: 1437730785}
-  settingsPanel: {fileID: 2002568430}
   NextLevelButton: {fileID: 592247268}
-  NextLevelPanel: {fileID: 1723893494}
   iaButton: {fileID: 1014243678}
+  settingsPanel: {fileID: 2002568430}
+  NextLevelPanel: {fileID: 1723893494}
+  mainMenuUI: {fileID: 1643983415}
+  gameUI: {fileID: 202882597}
+  gameOverUI: {fileID: 1643983415}
   padding: {fileID: 650928143}
 --- !u!1 &221093754
 GameObject:
@@ -1430,11 +1430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1149ebcc91623e439dd12368be2fdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 2}
-  brickPrefab: {fileID: 8563342483539399689, guid: ca88ae47f0800fd4ebaf05e06383a6fe, type: 3}
   spacing: 0.2
   wallWidthRatio: 0.8
   wallHeightRatio: 0.3
+  finishChangeLevel: 1
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -1467,8 +1466,9 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   moveBall: {fileID: 0}
   bricks: {fileID: 0}
-  finishChangeLevel: 1
   uimanager: {fileID: 0}
+  size: {x: 5, y: 2}
+  brickPrefab: {fileID: 8563342483539399689, guid: ca88ae47f0800fd4ebaf05e06383a6fe, type: 3}
   nextPanel_PC: {fileID: 1853507905}
   nextPanel_H: {fileID: 1723893494}
   nextPanel_V: {fileID: 772821845}
@@ -2400,9 +2400,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  ballTransform: {fileID: 2050139351}
   isAutoMode: 0
   bricks: {fileID: 0}
+  ballTransform: {fileID: 2050139351}
 --- !u!212 &650928144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8483,7 +8483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1874280050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8895,9 +8895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ede8198506634e4b9ac32bff60350a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuUI: {fileID: 1643983415}
-  gameUI: {fileID: 1961624733}
-  gameOverUI: {fileID: 1643983415}
   newGameButton: {fileID: 0}
   continueButton: {fileID: 0}
   quitButton: {fileID: 0}
@@ -8906,10 +8903,13 @@ MonoBehaviour:
   newGameFromOverButton: {fileID: 0}
   quitFromOverButton: {fileID: 0}
   closeButton: {fileID: 1439002307}
-  settingsPanel: {fileID: 1874280049}
   NextLevelButton: {fileID: 1899037339}
-  NextLevelPanel: {fileID: 1853507905}
   iaButton: {fileID: 579520983}
+  settingsPanel: {fileID: 1874280049}
+  NextLevelPanel: {fileID: 1853507905}
+  mainMenuUI: {fileID: 1643983415}
+  gameUI: {fileID: 1961624733}
+  gameOverUI: {fileID: 1643983415}
   padding: {fileID: 650928143}
 --- !u!4 &1961624735
 Transform:
@@ -9231,8 +9231,9 @@ MonoBehaviour:
   speed: 10
   maxVelocity: 15
   speedIncrement: 0.5
-  offsetY: 0.5
+  offsetY: 0.3
   padding: {fileID: 650928142}
+  audioSource: {fileID: 0}
 --- !u!50 &2050139353
 Rigidbody2D:
   serializedVersion: 4
@@ -9582,9 +9583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ede8198506634e4b9ac32bff60350a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuUI: {fileID: 1643983415}
-  gameUI: {fileID: 2129410786}
-  gameOverUI: {fileID: 1643983415}
   newGameButton: {fileID: 0}
   continueButton: {fileID: 0}
   quitButton: {fileID: 0}
@@ -9593,10 +9591,13 @@ MonoBehaviour:
   newGameFromOverButton: {fileID: 0}
   quitFromOverButton: {fileID: 0}
   closeButton: {fileID: 917681682}
-  settingsPanel: {fileID: 1928338966}
   NextLevelButton: {fileID: 1786248855}
-  NextLevelPanel: {fileID: 772821845}
   iaButton: {fileID: 109315866}
+  settingsPanel: {fileID: 1928338966}
+  NextLevelPanel: {fileID: 772821845}
+  mainMenuUI: {fileID: 1643983415}
+  gameUI: {fileID: 2129410786}
+  gameOverUI: {fileID: 1643983415}
   padding: {fileID: 650928143}
 --- !u!1 &2142736709
 GameObject:

@@ -23,8 +23,8 @@ public class UIManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject NextLevelPanel;
     public GameObject mainMenuUI;  // Main Menu UI
-    public GameObject gameUI;       // Main Game UI (����Ϊ��)
-    public GameObject gameOverUI;   // Game Over UI (����Ϊ��)
+    public GameObject gameUI;       // Main Game UI
+    public GameObject gameOverUI;   // Game Over UI
     public Padding padding;
 
     private ScreenOrientation lastOrientation;
@@ -144,10 +144,10 @@ public class UIManager : MonoBehaviour
 
         string relativePath = "\\Script\\SaveData\\savegame.json";
 
-        // ��ȡ�ļ�����·��
+        
         string savePath = Application.dataPath + relativePath;
 
-        // ����ļ��Ƿ����
+        
         if (File.Exists(savePath))
         {
             // Continue the game
@@ -170,7 +170,7 @@ public class UIManager : MonoBehaviour
 
     void OnStopButtonClicked()
     {
-        // ��ʾ�������
+        //PauseGame
         settingsPanel.SetActive(true);
         GameManager.instance.PauseGame();
     }
@@ -197,6 +197,7 @@ public class UIManager : MonoBehaviour
 
     public void CloseSettingsPanel()
     {
+        //Close pausa panel
         Debug.Log("ClosePanel");
         settingsPanel.SetActive(false);
         GameManager.instance.ResumeGame();
@@ -204,6 +205,7 @@ public class UIManager : MonoBehaviour
 
     public void CloseNextLevelPanel()
     {
+        //close next level panel
         Debug.Log("ClosePanel");
         NextLevelPanel.SetActive(false);
         GameManager.instance.ResumeGame();
@@ -211,6 +213,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenNextLevelPanel()
     {
+        //open next level panel
         Debug.Log("ClosePanel");
         NextLevelPanel.SetActive(true);
         GameManager.instance.PauseGame();
@@ -218,6 +221,7 @@ public class UIManager : MonoBehaviour
 
     public void IAPlayer()
     {
+        //Active iaPlayer
         GameObject picture = GameObject.Find("IAButton/Button/ActiveAI");
         if (padding.isAutoMode) {
             padding.isAutoMode = false;
@@ -234,7 +238,5 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        // Call this if you need to update UI every frame
-        // UpdateUIForCurrentScene();
     }
 }
